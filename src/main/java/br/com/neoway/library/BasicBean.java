@@ -24,7 +24,7 @@ public class BasicBean implements Serializable {
 
     public String preencheString() {
         if (msg.equals("Bem Vindo!")){
-          this.setMsg("Neoway UPE - 2017");
+          this.setMsg("Neoway UPE - 2018");
         }
         else{
           this.setMsg("Bem Vindo!");
