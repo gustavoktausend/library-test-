@@ -1,0 +1,60 @@
+package br.com.neoway.library;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Generated;
+
+public class Livro {
+
+
+    private int idLivro;
+
+    private String titulo;
+    private String editora;
+    private String autor;
+    private String data_publicacao;
+    private String edicao;
+
+
+    public Livro() {
+
+    }
+
+    public int getIdLivro() {
+        return idLivro;
+    }
+    public String getTitulo() {
+        return titulo;
+    }
+    public String getEditora() {
+        return editora;
+    }
+    public String getAutor() {
+        return autor;
+    }
+    public String getData_publicacao() {
+        return data_publicacao;
+    }
+    public String getEdicao() {
+        return edicao;
+    }
+
+    public void setIdLivro(int idLivro) {
+        this.idLivro = idLivro;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+    public void setData_publicacao(String data_publicacao) {
+        this.data_publicacao = data_publicacao;
+    }
+    public void setEdicao(String edicao) {
+        this.edicao = edicao;
+    }
+
+}

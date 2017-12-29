@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <h1>Cadastro de Novo Usuário</h1>
+    <h:panelGrid>
+        <h:form>
+          <fieldset>
+              <legend>Novo Usuário</legend>
+            <h:outputLabel value="Nome:" for="nome"/> <br></br>
+            <h:inputText   id="nome" value="#{usuarioBean.usuario.idUser}"/><br></br>
+            <h:outputLabel value="Senha:" for="senha"/> <br></br>
+            <h:inputSecret   id="senha" value="#{usuarioBean.usuario.password}"/> <br></br>
+            <h:outputLabel value="Telefone:" for="telefone"/><br></br>
+            <h:inputText   id="telefone" value="#{usuarioBean.usuario.telefone}"/><br></br>
+            <h:outputLabel value="Perfil:" for="perfil"/><br></br>
+            <h:selectOneRadio id="perfil" value = "#{usuarioBean.usuario.perfil}">
+                  <f:selectItem itemValue = "1" itemLabel = "Administrador" />
+                  <f:selectItem itemValue = "2" itemLabel = "Comum" />
+            </h:selectOneRadio><br></br>
+            <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/><br></br>
+            <h:commandButton value="Consultar" />
+            <h:commandButton value="Editar" />
+            <h:commandButton value="Excluir" />
+          </fieldset>
+        </h:form>
+    </h:panelGrid>
+</h:body>   
+   
+</html>

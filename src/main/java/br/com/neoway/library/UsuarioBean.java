@@ -1,0 +1,82 @@
+package br.com.neoway.library;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@ViewScoped
+@ManagedBean
+public class UsuarioBean implements Serializable{
+
+    private Usuario usuario;
+
+
+
+    private int filtroId;
+
+    private static List<Usuario> usuarios;
+
+
+
+
+    @PostConstruct
+    public void init(){
+        usuarios = new ArrayList<Usuario>();
+        usuario = new Usuario();
+    }
+
+
+
+    public int getFiltroId() {
+        return filtroId;
+    }
+
+    public void setFiltroId(int filtroId) {
+        this.filtroId = filtroId;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public void cadastrarUsuario(){
+//        if (usuario.getPerfil().isEmpty()){
+//            throw new RuntimeException("É necessário escolher um tipo de Perfil");
+//        }
+//        if (usuario.getEmail().isEmpty()){
+//            throw new RuntimeException("É necessário Email");
+//        }
+//        if (usuario.getPassword().isEmpty()){
+//            throw new RuntimeException("É necessário Preencher Campo Senha!");
+//        }
+        System.out.println("Usuário" + this.usuario.getPerfil());
+
+        usuarios.add(usuario);
+    }
+
+    public void buscarUsuario(){
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdUser() == this.getFiltroId()){
+                this.setUsuario(usuario);
+                System.out.println(this.usuario.getNome());
+            }
+        }
+    }
+
+
+}
