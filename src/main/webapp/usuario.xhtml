@@ -23,7 +23,7 @@
                   <f:selectItem itemValue = "2" itemLabel = "Comum" />
             </h:selectOneRadio><br></br>
             <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/><br></br>
-            <h:commandButton value="Consultar" />
+            <h:commandButton value="Consultar" action="#{usuarioBean.buscarUsuario}" /> <br></br>
             <h:commandButton value="Editar" />
             <h:commandButton value="Excluir" />
           </fieldset>

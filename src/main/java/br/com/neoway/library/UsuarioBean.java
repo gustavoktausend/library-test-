@@ -2,12 +2,13 @@ package br.com.neoway.library;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@ViewScoped
+@SessionScoped
 @ManagedBean
 public class UsuarioBean implements Serializable{
 
@@ -17,7 +18,7 @@ public class UsuarioBean implements Serializable{
 
     private int filtroId;
 
-    private static List<Usuario> usuarios;
+    private  List<Usuario> usuarios;
 
 
 
@@ -62,21 +63,22 @@ public class UsuarioBean implements Serializable{
 //            throw new RuntimeException("É necessário Email");
 //        }
 //        if (usuario.getPassword().isEmpty()){
-//            throw new RuntimeException("É necessário Preencher Campo Senha!");
-//        }
-        System.out.println("Usuário" + this.usuario.getPerfil());
-
-        usuarios.add(usuario);
-    }
+//            throw new RuntimeException("É necessário Preencher Campo Senha!"); }
+        System.out.println("Usuário" + this.usuario.getPerfil() + "id:" +this.usuario.getIdUser()  );
+        usuarios.add(this.usuario);
+        System.out.println(this.usuario.getIdUser());
+        this.usuario = new Usuario();
+        }
 
     public void buscarUsuario(){
         for (Usuario usuario : usuarios) {
-            if (usuario.getIdUser() == this.getFiltroId()){
-                this.setUsuario(usuario);
-                System.out.println(this.usuario.getNome());
-            }
+            if (usuario.getIdUser() == this.usuario.getIdUser()){
+                    this.setUsuario(usuario);
+                    System.out.println(this.usuario.getIdUser());
+         }
         }
+        System.out.println("deu ruim");
     }
 
 
-}
+    }
