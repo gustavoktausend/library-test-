@@ -73,12 +73,21 @@ public class UsuarioBean implements Serializable{
     public void buscarUsuario(){
         for (Usuario usuario : usuarios) {
             if (usuario.getIdUser() == this.usuario.getIdUser()){
-                    this.setUsuario(usuario);
-                    System.out.println(this.usuario.getIdUser());
-         }
+                this.setUsuario(usuario);
+                System.out.println(this.usuario.getIdUser());
+            }
         }
-        System.out.println("deu ruim");
     }
 
+    public void deletarUsuario(){
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdUser() == this.usuario.getIdUser()){
+                System.out.println(this.usuario.getIdUser()+"/n vai ser olbiterado");
+                usuarios.remove(this.usuario);
+                System.out.println("Usuário Obliterado");
+            }
+
+        }
+    }
 
     }
