@@ -13,7 +13,7 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
 
-    public static List<Livro> livros;
+    public  List<Livro> livros;
 
     @PostConstruct
     public void init(){
@@ -29,7 +29,7 @@ public class LivroBean implements Serializable{
         this.livro = livro;
     }
 
-    public static List<Livro> getLivros() {
+    public  List<Livro> getLivros() {
         return livros;
     }
 

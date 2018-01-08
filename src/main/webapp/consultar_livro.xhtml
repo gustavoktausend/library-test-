@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <h1>CRUD Usuário</h1>
+    <h:panelGrid>
+        <h:form>
+            <fieldset>
+                <legend>Novo Livro</legend>
+                <h:outputLabel value="Código" for="idLivro"/><br></br>
+                <h:inputText id="idLivro" value="#{livroBean.livro.idLivro}"/><br></br>
+                <h:outputLabel value="Título:" for="titulo"/> <br></br>
+                <h:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
+                <h:outputLabel value="Editora:" for="editora"/><br></br>
+                <h:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
+                <h:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>
+                <h:inputText id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
+                <h:outputLabel value="Autor:" for="autor"/> <br></br>
+                <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
+                <h:outputLabel value="Edição:" for="edicao"/> <br></br>
+                <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
+                <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}" />
+                <h:commandButton value="Editar" action="#{livroBean.buscarLivro}" />
+                <h:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
+                <h:commandButton value="Excluir" /><br></br>
+            </fieldset>
+          <fieldset>
+                <legend>Livros Cadastrados</legend>
+                <h:dataTable id="livros-consultados" value="#{livroBean.livros}" var="livro">
+                    <h:column id="coluna1">
+                        <f:facet name ="header">
+                            <h:outputText value="ID Registro"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.idLivro}"/>
+                    </h:column>
+                    <h:column id="coluna2">
+                        <f:facet name="header">
+                            <h:outputText value="Título"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.titulo}"/>
+                    </h:column>
+                    <h:column id="coluna3">
+                        <f:facet name = "header">
+                            <h:outputText value="Autor"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.autor}"/>
+                    </h:column>
+                </h:dataTable>
+            </fieldset>
+        </h:form>
+    </h:panelGrid>
+</h:body>   
+   
+</html>
