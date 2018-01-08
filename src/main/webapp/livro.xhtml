@@ -46,9 +46,33 @@
         <fieldset>
             <legend>Consulta Livro</legend>
             <h:outputLabel value="Código" for="idLivroConsulta"/><br></br>
-            <h:inputText id="idLivroConsulta" value="#{livroBean.filtroId}"/>
+            <h:inputText id="idLivroConsulta" value="#{livroBean.livro.idLivro}"/>
             <h:commandButton value="Consultar" action="#{livroBean.buscarLivro}"/>
 
+        </fieldset>
+        <fieldset>
+            <legend>Lista de Consulta</legend>
+            <h:dataTable id="livros-consultados" value="#{livroBean.livros}" var="livro">
+                <h:column id="coluna1">
+                    <f:facet name ="header">
+                        <h:outputText value="ID Registro"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.idLivro}"/>
+                </h:column>
+                <h:column id="coluna2">
+                    <f:facet name="header">
+                        <h:outputText value="Título"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.titulo}"/>
+                </h:column>
+                <h:column id="coluna3">
+                    <f:facet name = "header">
+                        <h:outputText value="Autor"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.autor}"/>
+                </h:column>
+
+            </h:dataTable>
         </fieldset>
     </h:form>
 

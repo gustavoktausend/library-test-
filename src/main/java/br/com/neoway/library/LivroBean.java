@@ -4,28 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
-@ViewScoped
+@SessionScoped
 @ManagedBean
 public class LivroBean implements Serializable{
 
     private Livro livro;
-    private int filtroId;
-    private List<Livro> livros;
+
+    public static List<Livro> livros;
 
     @PostConstruct
     public void init(){
         livros = new ArrayList<Livro>();
         livro = new Livro();
-    }
-
-    public int getFiltroId() {
-        return filtroId;
-    }
-
-    public void setFiltroId(int filtroId) {
-        this.filtroId = filtroId;
     }
 
     public Livro getLivro() {
@@ -34,6 +27,10 @@ public class LivroBean implements Serializable{
 
     public void setLivro(Livro livro){
         this.livro = livro;
+    }
+
+    public static List<Livro> getLivros() {
+        return livros;
     }
 
     public void cadastrarLivro(){
@@ -55,14 +52,15 @@ public class LivroBean implements Serializable{
             throw  new RuntimeException("É necessário informar a Editora");
 
         }
-
+        System.out.println("Titulo:"+this.livro.getTitulo()+"ID:"+this.livro.getIdLivro()+"Autor:"+this.livro.getAutor());
         livros.add(livro);
+        this.livro = new Livro();
 
     }
 
     public void buscarLivro(){
         for (Livro livro : livros) {
-            if (livro.getIdLivro() == this.getFiltroId()){
+            if (livro.getIdLivro() == this.livro.getIdLivro()){
                 this.setLivro(livro);
                 System.out.println(this.livro.getTitulo());
             }

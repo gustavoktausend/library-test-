@@ -18,7 +18,7 @@ public class UsuarioBean implements Serializable{
 
     private int filtroId;
 
-    private  List<Usuario> usuarios;
+    public static List<Usuario> usuarios;
 
 
 
@@ -66,7 +66,6 @@ public class UsuarioBean implements Serializable{
 //            throw new RuntimeException("É necessário Preencher Campo Senha!"); }
         System.out.println("Usuário" + this.usuario.getPerfil() + "id:" +this.usuario.getIdUser()  );
         usuarios.add(this.usuario);
-        System.out.println(this.usuario.getIdUser());
         this.usuario = new Usuario();
         }
 
@@ -96,10 +95,20 @@ public class UsuarioBean implements Serializable{
     public void editarUsuario(){
         for (Usuario usuario : usuarios ) {
             if (usuario.getIdUser() == this.usuario.getIdUser()){
-                usuarios.equals(this.usuario);
-                System.out.println("Usuário editado, novo valor de telefone:" + this.usuario.getTelefone()+ "Id:" + this.usuario.getIdUser());
+
+//                System.out.println("Usuário editado, novo valor de telefone:" + this.usuario.getTelefone()+ "Id:" + this.usuario.getIdUser());
 
 
+            }
+        }
+    }
+
+    public void loginUsuario() {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(this.usuario.getEmail()) && usuario.getPassword().equals(this.usuario.getPassword())){
+                System.out.println("Login realizado com sucesso");
+            }else{
+                System.out.println("Login inválido");
             }
         }
     }

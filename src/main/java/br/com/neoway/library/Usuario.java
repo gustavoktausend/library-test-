@@ -14,9 +14,7 @@ public class Usuario {
     private String email;
     private String password;
 
-    public Usuario() {
-
-    }
+    public Usuario() {  }
 
 
     public int getIdUser() {

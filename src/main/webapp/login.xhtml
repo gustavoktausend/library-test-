@@ -12,11 +12,11 @@
                 <fieldset>
                     <Legend>Login</Legend>
                     <h:outputLabel value="Login" for="email"/>
-                    <h:inputText id="email"/>
+                    <h:inputText id="email" value="#{usuarioBean.usuario.email}"/>
                     <h:outputLabel value="Senha" for="password"/>
-                    <h:inputSecret id="password"/>
-                    <h:commandButton value="Login"/>
-                <fieldset>
+                    <h:inputSecret id="password" value="#{usuarioBean.usuario.password}"/>
+                    <h:commandButton value="Login" action="#{usuarioBean.loginUsuario}"/>
+                </fieldset>
             </h:form>
         </h:panelGrid>
 
