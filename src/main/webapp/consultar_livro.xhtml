@@ -26,11 +26,11 @@
                 <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}" />
                 <h:commandButton value="Editar" action="#{livroBean.buscarLivro}" />
                 <h:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
-                <h:commandButton value="Excluir" /><br></br>
+                <h:commandButton value="Excluir"/><br></br>
             </fieldset>
           <fieldset>
                 <legend>Livros Cadastrados</legend>
-                <h:dataTable id="livros-consultados" value="#{livroBean.livros}" var="livro">
+                <h:dataTable id="livros-cadastrados" value="#{livroBean.livros}" var="livro">
                     <h:column id="coluna1">
                         <f:facet name ="header">
                             <h:outputText value="ID Registro"/>
@@ -48,6 +48,29 @@
                             <h:outputText value="Autor"/>
                         </f:facet>
                         <h:outputText value="#{livro.autor}"/>
+                    </h:column>
+                </h:dataTable>
+            </fieldset>
+            <fieldset>
+                <legend>Buscar Livro</legend>
+                <h:dataTable id="livros-consultados" value="#{livroBean.livros}" var="livro">
+                    <h:column id="coluna4">
+                        <f:facet name ="header">
+                            <h:outputText value="ID Registro"/>
+                        </f:facet>
+                        <h:outputText value="#{livroBean.livro.idLivro}"/>
+                    </h:column>
+                    <h:column id="coluna5">
+                        <f:facet name="header">
+                            <h:outputText value="Título"/>
+                        </f:facet>
+                        <h:outputText value="#{livroBean.livro.titulo}"/>
+                    </h:column>
+                    <h:column id="coluna6">
+                        <f:facet name = "header">
+                            <h:outputText value="Autor"/>
+                        </f:facet>
+                        <h:outputText value="#{livroBean.livro.autor}"/>
                     </h:column>
                 </h:dataTable>
             </fieldset>
