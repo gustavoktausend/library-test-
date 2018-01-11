@@ -13,6 +13,8 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
 
+    public int i;
+
     public  List<Livro> livros;
 
     @PostConstruct
@@ -72,10 +74,18 @@ public class LivroBean implements Serializable{
         System.out.println("Removendo Livro:" + this.livro.getTitulo()) ;
         livros.remove(this.livro);
         this.livro = new Livro();
-
-
-
-
     }
 
+    public void carregarLivro (Livro livro) {
+
+        System.out.println("Carregando Livro:" + this.livro.getTitulo());
+        this.livro = livro;
+        System.out.println("Indice do book" + livros.indexOf(this.livro));
+    }
+
+    public void alterarLivro (Livro livro) {
+        System.out.println("Indice do book" + livros.indexOf(this.livro));
+        livros.set(livros.indexOf(this.livro),this.livro);
+        this.livro = new Livro();
+    }
 }

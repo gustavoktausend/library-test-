@@ -24,7 +24,7 @@
                 <h:outputLabel value="Edição:" for="edicao"/> <br></br>
                 <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
                 <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}" />
-                <h:commandButton value="Editar" action="#{livroBean.buscarLivro}" />
+                <h:commandButton value="Editar" action="#{livroBean.alterarLivro(livro)}" />
                 <h:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
                 <h:commandButton value="Excluir"/><br></br>
             </fieldset>
@@ -54,6 +54,12 @@
                             <h:outputText value="Remover"/>
                         </f:facet>
                         <h:commandLink value="Remove" action="#{livroBean.removerLivro(livro)}"/>
+                    </h:column>
+                    <h:column id="coluna5">
+                        <f:facet name = "header">
+
+                        </f:facet>
+                        <h:commandLink value="Alterar" action="#{livroBean.carregarLivro(livro)}"/>
                     </h:column>
                 </h:dataTable>
             </fieldset>
