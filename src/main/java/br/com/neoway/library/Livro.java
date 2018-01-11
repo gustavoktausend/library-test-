@@ -1,6 +1,7 @@
 package br.com.neoway.library;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Generated;
 
 public class Livro {
@@ -57,4 +58,17 @@ public class Livro {
         this.edicao = edicao;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return idLivro == livro.idLivro;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(idLivro);
+    }
 }

@@ -1,25 +1,24 @@
 package br.com.neoway.library;
+import br.com.neoway.library.dao.LivroDAO;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
-@SessionScoped
+@RequestScoped
 @ManagedBean
 public class LivroBean implements Serializable{
 
     private Livro livro;
 
-    public int i;
-
-    public  List<Livro> livros;
-
     @PostConstruct
     public void init(){
-        livros = new ArrayList<Livro>();
+
         livro = new Livro();
     }
 
@@ -32,7 +31,7 @@ public class LivroBean implements Serializable{
     }
 
     public List<Livro> getLivros() {
-        return livros;
+        return LivroDAO.list();
     }
 
     public void cadastrarLivro(){
@@ -55,13 +54,12 @@ public class LivroBean implements Serializable{
         }
 
         System.out.println("Titulo:"+this.livro.getTitulo()+"ID:"+this.livro.getIdLivro()+"Autor:"+this.livro.getAutor());
-        livros.add(livro);
-        this.livro = new Livro();
+        LivroDAO.add(livro);
 
     }
 
     public void buscarLivro(){
-        for (Livro livro : livros) {
+        for (Livro livro : LivroDAO.list()) {
             if (livro.getIdLivro() == this.livro.getIdLivro()){
                 this.setLivro(livro);
                 System.out.println(this.livro.getTitulo());
@@ -72,20 +70,18 @@ public class LivroBean implements Serializable{
     public void removerLivro(Livro livro){
         this.setLivro(livro);
         System.out.println("Removendo Livro:" + this.livro.getTitulo()) ;
-        livros.remove(this.livro);
-        this.livro = new Livro();
+        LivroDAO.remove(this.livro);
     }
 
-    public void carregarLivro (Livro livro) {
-
-        System.out.println("Carregando Livro:" + this.livro.getTitulo());
-        this.livro = livro;
-        System.out.println("Indice do book" + livros.indexOf(this.livro));
-    }
+//    public void carregarLivro (Livro livro) {
+//
+//        System.out.println("Carregando Livro:" + this.livro.getTitulo());
+//        this.livro = livro;
+//        System.out.println("Indice do book" +;
+//    }
 
     public void alterarLivro (Livro livro) {
-        System.out.println("Indice do book" + livros.indexOf(this.livro));
-        livros.set(livros.indexOf(this.livro),this.livro);
-        this.livro = new Livro();
+        LivroDAO.update(this.livro);
+
     }
 }
