@@ -44,35 +44,31 @@
                         <h:outputText value="#{livro.titulo}"/>
                     </h:column>
                     <h:column id="coluna3">
+                    <f:facet name = "header">
+                        <h:outputText value="Autor"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.autor}"/>
+                    </h:column>
+                    <h:column id="coluna4">
                         <f:facet name = "header">
-                            <h:outputText value="Autor"/>
+                            <h:outputText value="Remover"/>
                         </f:facet>
-                        <h:outputText value="#{livro.autor}"/>
+                        <h:commandLink value="Remove" action="#{livroBean.removerLivro(livro)}"/>
                     </h:column>
                 </h:dataTable>
             </fieldset>
             <fieldset>
-                <legend>Buscar Livro</legend>
-                <h:dataTable id="livros-consultados" value="#{livroBean.livros}" var="livro">
-                    <h:column id="coluna4">
-                        <f:facet name ="header">
-                            <h:outputText value="ID Registro"/>
-                        </f:facet>
-                        <h:outputText value="#{livroBean.livro.idLivro}"/>
-                    </h:column>
-                    <h:column id="coluna5">
-                        <f:facet name="header">
-                            <h:outputText value="Título"/>
-                        </f:facet>
-                        <h:outputText value="#{livroBean.livro.titulo}"/>
-                    </h:column>
-                    <h:column id="coluna6">
-                        <f:facet name = "header">
-                            <h:outputText value="Autor"/>
-                        </f:facet>
-                        <h:outputText value="#{livroBean.livro.autor}"/>
-                    </h:column>
-                </h:dataTable>
+                <legend>Busca Livro</legend>
+                <h:outputLabel value="Id Livro:" for="idLivroBusca"/><br></br>
+                <h:outputText id="idLivroBusca" value="#{livroBean.livro.idLivro}"/><br></br>
+                <h:outputLabel value="Título:" for="tituloBusca"/><br></br>
+                <h:outputText id="tituloBusca" value="#{livroBean.livro.titulo}"/><br></br>
+                <h:outputLabel value="Editora:" for="editoraBusca"/><br></br>
+                <h:outputText id="editoraBusca" value="#{livroBean.livro.editora}"/><br></br>
+                <h:outputLabel value="Autor:" for="autorBusca"/><br></br>
+                <h:outputText id="autorBusca" value="#{livroBean.livro.autor}"/><br></br>
+                <h:outputLabel value="Ano de Publicação:" for="anoPublicacaoBusca"/><br></br>
+                <h:outputText id="anoPublicacaoBusca" value="#{livroBean.livro.data_publicacao}"/><br></br>
             </fieldset>
         </h:form>
     </h:panelGrid>
