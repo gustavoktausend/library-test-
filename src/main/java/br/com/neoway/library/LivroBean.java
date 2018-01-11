@@ -82,6 +82,7 @@ public class LivroBean implements Serializable{
 
     public void alterarLivro (Livro livro) {
         LivroDAO.update(this.livro);
+        this.livro = livro;
 
     }
 }
