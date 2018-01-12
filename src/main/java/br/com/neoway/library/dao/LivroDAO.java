@@ -7,6 +7,8 @@ import java.util.List;
 
 public class LivroDAO {
 
+    public static int IdCount = 1;
+
     private static List<Livro> livros;
 
     static {
@@ -14,8 +16,14 @@ public class LivroDAO {
     }
 
     public static void add(Livro livro){
+        if (existeLivro(livro.getIdLivro())){
+            livro.setIdLivro(IdCount);
+            livros.add(livro);
 
-        livros.add(livro);
+        }else{
+            System.out.println("Usuario já existe");
+        }
+
     }
 
     public static void remove(Livro livro){
@@ -40,6 +48,22 @@ public class LivroDAO {
         return null;
     }
 
+    public static boolean existeLivro (int idLivro){
+
+        for(Livro livroexiste: livros){
+
+            if (idLivro == livroexiste.getIdLivro()){
+
+                return true;
+            }
+
+            if (idLivro != livroexiste.getIdLivro()){
+
+                return false;
+            }
+        }
+        return false;
+    }
 
     public static void update(Livro livro){
 
