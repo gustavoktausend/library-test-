@@ -14,14 +14,17 @@ public class LivroDAO {
     }
 
     public static void add(Livro livro){
+
         livros.add(livro);
     }
 
     public static void remove(Livro livro){
+
         livros.remove(livro);
     }
 
     public static List<Livro> list(){
+
         return livros;
     }
 
@@ -37,7 +40,9 @@ public class LivroDAO {
         return null;
     }
 
+
     public static void update(Livro livro){
+
                 Livro livroEditado = findById(livro.getIdLivro());
                 livroEditado.setTitulo(livro.getTitulo());
                 //referencia // obj // ponteiro e etc
