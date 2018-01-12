@@ -1,14 +1,10 @@
 package br.com.neoway.library;
 
 import java.util.Date;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 public class Usuario {
 
-    @Id
-    @GeneratedValue
-    private Integer idUser;
 
+    private int idUser;
     private String nome;
     private double telefone;
     private String perfil;

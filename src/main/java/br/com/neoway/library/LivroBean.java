@@ -53,8 +53,6 @@ public class LivroBean implements Serializable{
         if(livro.getEditora().isEmpty()){
             throw  new RuntimeException("É necessário informar a Editora");
         }
-
-        System.out.println("Titulo:"+this.livro.getTitulo()+"ID:"+this.livro.getIdLivro()+"Autor:"+this.livro.getAutor());
         LivroDAO.add(livro);
         livro = new Livro();
 

@@ -1,26 +1,15 @@
 package br.com.neoway.library;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import javax.annotation.Generated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 public class Livro {
 
-    @Id
-    @GeneratedValue
-    private Integer idLivro;
 
+    private int idLivro;
     private String titulo;
     private String editora;
     private String autor;
     private String data_publicacao;
     private String edicao;
-
-
-
-
     private boolean reservado;
     private boolean alugado;
 
