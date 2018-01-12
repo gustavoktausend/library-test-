@@ -16,6 +16,10 @@ public class Livro {
     private String edicao;
 
 
+
+    private boolean alugado;
+
+
     public Livro() {
 
     }
@@ -38,6 +42,9 @@ public class Livro {
     public String getEdicao() {
         return edicao;
     }
+    public boolean isAlugado() {
+        return alugado;
+    }
 
     public void setIdLivro(int idLivro) {
         this.idLivro = idLivro;
@@ -56,6 +63,9 @@ public class Livro {
     }
     public void setEdicao(String edicao) {
         this.edicao = edicao;
+    }
+    public void setAlugado(boolean alugado) {
+        this.alugado = alugado;
     }
 
     @Override

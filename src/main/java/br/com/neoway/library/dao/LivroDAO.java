@@ -45,6 +45,12 @@ public class LivroDAO {
 
                 Livro livroEditado = findById(livro.getIdLivro());
                 livroEditado.setTitulo(livro.getTitulo());
+                livroEditado.setIdLivro(livro.getIdLivro());
+                livroEditado.setEdicao(livro.getEdicao());
+                livroEditado.setEditora(livro.getEditora());
+                livroEditado.setAutor(livro.getAutor());
+                livroEditado.setData_publicacao(livro.getData_publicacao());
+
                 //referencia // obj // ponteiro e etc
 
     }
