@@ -38,7 +38,9 @@ public class LivroDAO {
     }
 
     public static void update(Livro livro){
-                livros.set(livros.indexOf(findById(livro.getIdLivro())),findById(livro.getIdLivro()));
-//                livros.add(livros.indexOf(findById(livro.getIdLivro())),findById(livro.getIdLivro()));
+                Livro livroEditado = findById(livro.getIdLivro());
+                livroEditado.setTitulo(livro.getTitulo());
+                //referencia // obj // ponteiro e etc
+
     }
 }

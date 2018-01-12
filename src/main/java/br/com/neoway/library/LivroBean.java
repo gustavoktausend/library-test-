@@ -16,9 +16,9 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
 
+
     @PostConstruct
     public void init(){
-
         livro = new Livro();
     }
 
@@ -33,6 +33,7 @@ public class LivroBean implements Serializable{
     public List<Livro> getLivros() {
         return LivroDAO.list();
     }
+
 
     public void cadastrarLivro(){
         System.out.println("Cadastrando Livro: " + this.livro.getTitulo());
@@ -82,13 +83,12 @@ public class LivroBean implements Serializable{
 //        System.out.println("Indice do book" +;
 //    }
 
-    public String alterarLivro() {
+    public void alterarLivro(Livro livro) {
         this.setLivro(livro);
-        return "editarLivro.xhtml";
     }
 
     public void confirmarAlteracaoLivro(){
-        setLivro(this.livro);
+        LivroDAO.update(livro);
     }
 
 
