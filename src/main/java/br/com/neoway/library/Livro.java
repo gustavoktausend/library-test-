@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Generated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 public class Livro {
 
