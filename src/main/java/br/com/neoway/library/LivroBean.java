@@ -76,12 +76,6 @@ public class LivroBean implements Serializable{
         this.livro = new Livro();
     }
 
-//    public void carregarLivro (Livro livro) {
-//
-//        System.out.println("Carregando Livro:" + this.livro.getTitulo());
-//        this.livro = livro;
-//        System.out.println("Indice do book" +;
-//    }
 
     public void alterarLivro(Livro livro) {
         this.setLivro(livro);

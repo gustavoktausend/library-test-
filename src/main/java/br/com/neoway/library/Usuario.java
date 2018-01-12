@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class Usuario {
 
-
-    private int idUser;
+    @Id
+    @GeneratedValue
+    private Integer idUser;
 
     private String nome;
     private double telefone;

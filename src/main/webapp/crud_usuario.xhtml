@@ -6,15 +6,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:body>
-    <h1>CRUD Livro</h1>
+    <h1>CRUD Usuário</h1>
     <h:panelGrid>
         <h:form>
             <fieldset id="campos_cadastro">
                 <legend>Novo Livro</legend>
-                <h:outputLabel value="Código" for="idLivro"/><br></br>
-                <h:inputText id="idLivro" value="#{livroBean.livro.idLivro}"/><br></br>
-                <h:outputLabel value="Título:" for="titulo"/> <br></br>
-                <h:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
+                <h:outputLabel value="Nome:" for="nome"/> <br></br>
+                <h:inputText   id="nome" value="#{livroBean.livro.titulo}"/><br></br>
                 <h:outputLabel value="Editora:" for="editora"/><br></br>
                 <h:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
                 <h:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>

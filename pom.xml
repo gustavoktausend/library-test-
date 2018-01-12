@@ -9,6 +9,13 @@
 
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 		<!-- /primefaces 4 -->
 		<dependency>
 			<groupId>org.primefaces</groupId>

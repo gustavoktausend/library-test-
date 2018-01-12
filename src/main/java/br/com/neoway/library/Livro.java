@@ -6,8 +6,9 @@ import javax.annotation.Generated;
 
 public class Livro {
 
-
-    private int idLivro;
+    @Id
+    @GeneratedValue
+    private Integer idLivro;
 
     private String titulo;
     private String editora;
@@ -17,6 +18,8 @@ public class Livro {
 
 
 
+
+    private boolean reservado;
     private boolean alugado;
 
 
@@ -45,7 +48,15 @@ public class Livro {
     public boolean isAlugado() {
         return alugado;
     }
+    public boolean isReservado() {
+        return reservado;
+    }
 
+
+
+    public void setReservado(boolean reservado) {
+        this.reservado = reservado;
+    }
     public void setIdLivro(int idLivro) {
         this.idLivro = idLivro;
     }
