@@ -7,6 +7,8 @@ import java.util.List;
 
 public class UsuarioDAO {
 
+    public static int IdCountUser;
+
     private static List<Usuario> usuarios;
 
     static {
@@ -14,8 +16,14 @@ public class UsuarioDAO {
     }
 
     public static void add(Usuario usuario){
+        if (existeUsuario(usuario.getEmail())){
+            System.out.println("Usuário já existente");
 
-        usuarios.add(usuario);
+        }else{
+            usuario.setIdUser(IdCountUser++);
+            usuarios.add(usuario);
+        }
+
     }
 
     public static void remove(Usuario usuario){
