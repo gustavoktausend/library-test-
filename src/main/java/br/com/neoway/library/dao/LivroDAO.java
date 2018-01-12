@@ -16,12 +16,13 @@ public class LivroDAO {
     }
 
     public static void add(Livro livro){
+        livro.setIdLivro(IdCount++);
         if (existeLivro(livro.getIdLivro())){
-            livro.setIdLivro(IdCount++);
-            livros.add(livro);
+            System.out.println("livro já existe");
 
         }else{
-            System.out.println("Usuario já existe");
+            livros.add(livro);
+
         }
 
     }
@@ -58,7 +59,6 @@ public class LivroDAO {
             }
 
             if (idLivro != livroexiste.getIdLivro()){
-
                 return false;
             }
         }

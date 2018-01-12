@@ -40,6 +40,22 @@ public class UsuarioDAO {
         return null;
     }
 
+    public static boolean existeUsuario (String email){
+
+        for(Usuario usuarioExiste: usuarios){
+
+            if (email.equals(usuarioExiste.getEmail())){
+
+                return true;
+            }
+
+            if (!email.equals(usuarioExiste.getEmail())){
+                return false;
+            }
+        }
+        return false;
+    }
+
 
     public static void update(Usuario usuario){
 
