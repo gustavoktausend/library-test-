@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LivroDAO {
 
-    public static int IdCount = 1;
+    public static int IdCount;
 
     private static List<Livro> livros;
 
@@ -17,7 +17,7 @@ public class LivroDAO {
 
     public static void add(Livro livro){
         if (existeLivro(livro.getIdLivro())){
-            livro.setIdLivro(IdCount);
+            livro.setIdLivro(IdCount++);
             livros.add(livro);
 
         }else{
