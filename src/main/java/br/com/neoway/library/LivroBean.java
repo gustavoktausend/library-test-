@@ -55,6 +55,7 @@ public class LivroBean implements Serializable{
 
         System.out.println("Titulo:"+this.livro.getTitulo()+"ID:"+this.livro.getIdLivro()+"Autor:"+this.livro.getAutor());
         LivroDAO.add(livro);
+        livro = new Livro();
 
     }
 
@@ -71,6 +72,7 @@ public class LivroBean implements Serializable{
         this.setLivro(livro);
         System.out.println("Removendo Livro:" + this.livro.getTitulo()) ;
         LivroDAO.remove(this.livro);
+        this.livro = new Livro();
     }
 
 //    public void carregarLivro (Livro livro) {
@@ -80,9 +82,14 @@ public class LivroBean implements Serializable{
 //        System.out.println("Indice do book" +;
 //    }
 
-    public void alterarLivro (Livro livro) {
-        LivroDAO.update(this.livro);
-        this.livro = livro;
-
+    public String alterarLivro() {
+        this.setLivro(livro);
+        return "editarLivro.xhtml";
     }
+
+    public void confirmarAlteracaoLivro(){
+        setLivro(this.livro);
+    }
+
+
 }

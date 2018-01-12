@@ -9,7 +9,7 @@
     <h1>CRUD Usuário</h1>
     <h:panelGrid>
         <h:form>
-            <fieldset>
+            <fieldset id="campos_cadastro">
                 <legend>Novo Livro</legend>
                 <h:outputLabel value="Código" for="idLivro"/><br></br>
                 <h:inputText id="idLivro" value="#{livroBean.livro.idLivro}"/><br></br>
@@ -23,7 +23,7 @@
                 <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
                 <h:outputLabel value="Edição:" for="edicao"/> <br></br>
                 <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
-                <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}" />
+                <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}"/>
                 <h:commandButton value="Editar" action="#{livroBean.alterarLivro}" />
                 <h:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
                 <h:commandButton value="Excluir"/><br></br>
@@ -59,22 +59,9 @@
                         <f:facet name = "header">
 
                         </f:facet>
-                        <h:commandLink value="Alterar" action="#{livroBean.alterarLivro(livro)}"/>
+                        <h:commandLink value="Alterar" action="#{livroBean.alterarLivro}"/>
                     </h:column>
                 </h:dataTable>
-            </fieldset>
-            <fieldset>
-                <legend>Busca Livro</legend>
-                <h:outputLabel value="Id Livro:" for="idLivroBusca"/><br></br>
-                <h:outputText id="idLivroBusca" value="#{livroBean.livro.idLivro}"/><br></br>
-                <h:outputLabel value="Título:" for="tituloBusca"/><br></br>
-                <h:outputText id="tituloBusca" value="#{livroBean.livro.titulo}"/><br></br>
-                <h:outputLabel value="Editora:" for="editoraBusca"/><br></br>
-                <h:outputText id="editoraBusca" value="#{livroBean.livro.editora}"/><br></br>
-                <h:outputLabel value="Autor:" for="autorBusca"/><br></br>
-                <h:outputText id="autorBusca" value="#{livroBean.livro.autor}"/><br></br>
-                <h:outputLabel value="Ano de Publicação:" for="anoPublicacaoBusca"/><br></br>
-                <h:outputText id="anoPublicacaoBusca" value="#{livroBean.livro.data_publicacao}"/><br></br>
             </fieldset>
         </h:form>
     </h:panelGrid>
