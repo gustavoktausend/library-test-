@@ -7,12 +7,15 @@ import java.util.List;
 
 public class LivroDAO {
 
-    public static int IdCount;
+    private static int IdCount = 2;
 
     private static List<Livro> livros;
 
+    private static List<Livro> livrosAlugados;
+
     static {
         livros = new ArrayList<>();
+        livrosAlugados = new ArrayList<>();
     }
 
     public static void add(Livro livro){
@@ -36,6 +39,25 @@ public class LivroDAO {
 
         return livros;
     }
+
+//    public List<Livro> listaAlugados(){
+//
+//    }
+
+    public static List<Livro> listarAlugados(Boolean alugado){
+        for (Livro localLivro: livros){
+            if (alugado == localLivro.isAlugado() ){
+
+                livrosAlugados.add(localLivro);
+                return livrosAlugados;
+            }
+        }
+        return null;
+    }
+
+//    public static Livro findbyStateReservado ( Boolean reservado){
+//
+//    }
 
     public static Livro findById (int idLivro){
 
@@ -67,14 +89,18 @@ public class LivroDAO {
 
     public static void update(Livro livro){
 
-                Livro livroEditado = findById(livro.getIdLivro());
-                livroEditado.setTitulo(livro.getTitulo());
-                livroEditado.setIdLivro(livro.getIdLivro());
-                livroEditado.setEdicao(livro.getEdicao());
-                livroEditado.setEditora(livro.getEditora());
-                livroEditado.setAutor(livro.getAutor());
-                livroEditado.setData_publicacao(livro.getData_publicacao());
 
+        Livro livroEditado = findById(livro.getIdLivro());
+        if (livroEditado != null) {
+            livroEditado.setTitulo(livro.getTitulo());
+            livroEditado.setEdicao(livro.getEdicao());
+            livroEditado.setEditora(livro.getEditora());
+            livroEditado.setAutor(livro.getAutor());
+            livroEditado.setData_publicacao(livro.getData_publicacao());
+        }
+
+
+                //if verifica nullpointer pra não dar cagada
                 //referencia // obj // ponteiro e etc
 
     }

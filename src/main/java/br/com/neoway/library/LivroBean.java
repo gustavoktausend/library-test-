@@ -34,6 +34,9 @@ public class LivroBean implements Serializable{
         return LivroDAO.list();
     }
 
+    public List<Livro> getLivrosAlugados() {
+        return LivroDAO.listarAlugados(livro.isAlugado());
+    }
 
     public void cadastrarLivro(){
         System.out.println("Cadastrando Livro: " + this.livro.getTitulo());
@@ -81,6 +84,12 @@ public class LivroBean implements Serializable{
 
     public void confirmarAlteracaoLivro(){
         LivroDAO.update(livro);
+    }
+
+    public void alugarLivro (Livro livro) {
+        this.setLivro(livro);
+        this.livro.setAlugado(true);
+        this.livro = new Livro();
     }
 
 

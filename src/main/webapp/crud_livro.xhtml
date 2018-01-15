@@ -58,6 +58,18 @@
                         </f:facet>
                         <h:commandLink value="Alterar" action="#{livroBean.alterarLivro(livro)}"/>
                     </h:column>
+                    <h:column id="coluna6">
+                        <f:facet name="header">
+                        </f:facet>
+                        <h:commandLink value="Alugar livro" action="#{livroBean.alugarLivro(livro)}"/>
+                    </h:column>
+                    <h:column id="coluna7">
+                        <f:facet name="header">
+                            <h:outputText value="Alugado?"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.alugado}"/>
+                    </h:column>
+
                 </h:dataTable>
             </fieldset>
         </h:form>
