@@ -16,6 +16,7 @@
                     <h:outputLabel value="Senha" for="password"/>
                     <h:inputSecret id="password" value="#{usuarioBean.usuario.password}"/>
                     <h:commandButton value="Login" action="#{usuarioBean.loginUsuario}"/>
+                    <h:commandButton value="Cadastre-se" action="#{usuarioBean.novoUsuarioCadastrar}"/>
                 </fieldset>
             </h:form>
         </h:panelGrid>

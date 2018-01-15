@@ -8,7 +8,7 @@ public class Usuario {
     private String nome;
     private double telefone;
     private String perfil;
-    private Date data_nascimento;
+    private String data_nascimento;
     private String email;
     private String password;
 
@@ -30,7 +30,7 @@ public class Usuario {
     public String getEmail() {
         return email;
     }
-    public Date getData_nascimento() {
+    public String getData_nascimento() {
         return data_nascimento;
     }
     public String getPassword() {
@@ -52,7 +52,7 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(String data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
     public void setPassword(String edicao) {

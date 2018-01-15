@@ -10,53 +10,61 @@
     <h:panelGrid>
         <h:form>
             <fieldset id="campos_cadastro">
-                <legend>Novo Livro</legend>
+                <legend>Novo Usuário</legend>
                 <h:outputLabel value="Nome:" for="nome"/> <br></br>
-                <h:inputText   id="nome" value="#{livroBean.livro.titulo}"/><br></br>
-                <h:outputLabel value="Editora:" for="editora"/><br></br>
-                <h:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
-                <h:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>
-                <h:inputText id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
-                <h:outputLabel value="Autor:" for="autor"/> <br></br>
-                <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
-                <h:outputLabel value="Edição:" for="edicao"/> <br></br>
-                <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
-                <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}"/>
-                <h:commandButton value="Editar" action="#{livroBean.confirmarAlteracaoLivro}" />
-                <h:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
-                <h:commandButton value="Excluir"/><br></br>
+                <h:inputText   id="nome" value="#{usuarioBean.usuario.nome}"/><br></br>
+                <h:outputLabel value="Senha:" for="senha"/><br></br>
+                <h:inputSecret   id="senha" value="#{usuarioBean.usuario.password}"/><br></br>
+                <h:outputLabel value="Email:" for="email"/><br></br>
+                <h:inputText id="email" value="#{usuarioBean.usuario.email}" /><br></br>
+                <h:outputLabel value="Data de Nascimento:" for="data_nascimento"/> <br></br>
+                <h:inputText id="data_nascimento" value="#{usuarioBean.usuario.data_nascimento}"/> <br></br>
+                <h:outputLabel value="Perfil:" for="perfil"/><br></br>
+                <h:selectOneRadio id="perfil" value = "#{usuarioBean.usuario.perfil}">
+                    <f:selectItem itemValue = "Administrador" itemLabel = "Administrador" />
+                    <f:selectItem itemValue = "Comum" itemLabel = "Comum" />
+                </h:selectOneRadio><br></br>
+                <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/>
+                <h:commandButton value="Editar" action="#{usuarioBean.confirmarAlteracaoUsuario}" />
+                <h:commandButton value="Buscar" action="#{usuarioBean.buscarUsuario}"/>
             </fieldset>
           <fieldset>
-                <legend>Livros Cadastrados</legend>
-                <h:dataTable id="livros-cadastrados" value="#{livroBean.livros}" var="livro">
+                <legend>Usuários Cadastrados</legend>
+                <h:dataTable id="usuarios-cadastrados" value="#{usuarioBean.usuarios}" var="usuario">
                     <h:column id="coluna1">
                         <f:facet name ="header">
                             <h:outputText value="ID Registro"/>
                         </f:facet>
-                        <h:outputText value="#{livro.idLivro}"/>
+                        <h:outputText value="#{usuario.idUser}"/>
                     </h:column>
                     <h:column id="coluna2">
                         <f:facet name="header">
-                            <h:outputText value="Título"/>
+                            <h:outputText value="Nome"/>
                         </f:facet>
-                        <h:outputText value="#{livro.titulo}"/>
+                        <h:outputText value="#{usuario.nome}"/>
                     </h:column>
                     <h:column id="coluna3">
                     <f:facet name = "header">
-                        <h:outputText value="Autor"/>
+                        <h:outputText value="Email"/>
                     </f:facet>
-                    <h:outputText value="#{livro.autor}"/>
+                    <h:outputText value="#{usuario.email}"/>
                     </h:column>
                     <h:column id="coluna4">
                         <f:facet name = "header">
-                            <h:outputText value="Remover"/>
+                            <h:outputText value="Perfil"/>
                         </f:facet>
-                        <h:commandLink value="Remove" action="#{livroBean.removerLivro(livro)}"/>
+                        <h:outputText value="#{usuario.perfil}"/>
                     </h:column>
                     <h:column id="coluna5">
                         <f:facet name = "header">
+                            <h:outputText value="Remover"/>
                         </f:facet>
-                        <h:commandLink value="Alterar" action="#{livroBean.alterarLivro(livro)}"/>
+                        <h:commandLink value="Remove" action="#{usuarioBean.removerUsuario(usuario)}"/>
+                    </h:column>
+                    <h:column id="coluna6">
+                        <f:facet name = "header">
+                        </f:facet>
+                        <h:commandLink value="Alterar" action="#{usuarioBean.alterarUsuario(usuario)}"/>
                     </h:column>
                 </h:dataTable>
             </fieldset>

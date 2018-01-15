@@ -61,7 +61,7 @@ public class UsuarioBean implements Serializable{
         }
     }
 
-    public void deletarUsuario(){
+    public void removerUsuario(Usuario usuario){
         this.setUsuario(usuario);
         UsuarioDAO.remove(this.usuario);
         this.usuario = new Usuario();
@@ -71,7 +71,8 @@ public class UsuarioBean implements Serializable{
         this.setUsuario(usuario);
     }
 
-    public void confirmarAlteracaoUsuario(){ UsuarioDAO.update(usuario);
+    public void confirmarAlteracaoUsuario(){
+        UsuarioDAO.update(usuario);
     }
 
     public String loginUsuario() {
@@ -91,4 +92,15 @@ public class UsuarioBean implements Serializable{
         }
         return "";
     }
+
+    public String novoUsuarioCadastrar() {
+        return "novo_usuario.xhtml";
+
+    }
+
+    public String retornoLogin(){
+        return "login.xhtml";
+    }
+
+
     }
