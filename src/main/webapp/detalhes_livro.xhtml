@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <h:panelGrid>
+        <h:form>
+          <fieldset>
+              <legend>Detalhes do Livro</legend>
+              <h:outputLabel value="Título:" for="titulo"/> <br></br>
+              <h:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
+              <h:outputLabel value="Editora:" for="editora"/><br></br>
+              <h:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
+              <h:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>
+              <h:inputText id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
+              <h:outputLabel value="Autor:" for="autor"/> <br></br>
+              <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
+              <h:outputLabel value="Edição:" for="edicao"/> <br></br>
+              <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
+              <h:commandButton value="Editar" action="#{livroBean.confirmarAlteracaoLivro}" />
+              <h:commandButton value="Excluir" action="#{livroBean.removerLivro(livroBean.livro)}"/>
+          </fieldset>
+        </h:form>
+    </h:panelGrid>
+</h:body>   
+   
+</html>

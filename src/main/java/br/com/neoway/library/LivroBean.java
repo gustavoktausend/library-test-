@@ -16,7 +16,7 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
 
-    private static List<Livro> listaBusca;
+    private  List<Livro> listaBusca;
 
     @PostConstruct
     public void init(){
@@ -76,14 +76,13 @@ public class LivroBean implements Serializable{
         }
     }
 
-    public List<Livro> buscarLivrosPorAutor(){
+    public void buscarLivrosPorAutor(){
         for (Livro livro :LivroDAO.list()) {
             if (livro.getAutor().equals(this.livro.getAutor())){
                 listaBusca.add(livro);
             }
 
         }
-        return listaBusca;
     }
 
     public List<Livro> listarBusca(){
@@ -101,6 +100,11 @@ public class LivroBean implements Serializable{
 
     public void alterarLivro(Livro livro) {
         this.setLivro(livro);
+    }
+
+    public String detalhesLivro(Livro livro) {
+        this.setLivro(livro);
+        return "detalhes_livro.xhtml";
     }
 
     public void confirmarAlteracaoLivro(){
