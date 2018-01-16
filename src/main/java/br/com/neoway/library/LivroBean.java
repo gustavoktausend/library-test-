@@ -16,7 +16,7 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
 
-    private  List<Livro> listaBusca;
+    public  List<Livro> listaBusca;
 
     @PostConstruct
     public void init(){
@@ -103,6 +103,7 @@ public class LivroBean implements Serializable{
     }
 
     public String detalhesLivro(Livro livro) {
+
         this.setLivro(livro);
         return "detalhes_livro.xhtml";
     }
