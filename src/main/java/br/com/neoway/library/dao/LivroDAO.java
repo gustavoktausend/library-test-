@@ -7,11 +7,12 @@ import java.util.List;
 
 public class LivroDAO {
 
-    private static int IdCount = 2;
+    private static int IdCount = 1;
 
     private static List<Livro> livros;
 
     private static List<Livro> livrosAlugados;
+
 
     static {
         livros = new ArrayList<>();
@@ -40,9 +41,7 @@ public class LivroDAO {
         return livros;
     }
 
-//    public List<Livro> listaAlugados(){
-//
-//    }
+
 
     public static List<Livro> listarAlugados(Boolean alugado){
         for (Livro localLivro: livros){
@@ -55,9 +54,7 @@ public class LivroDAO {
         return null;
     }
 
-//    public static Livro findbyStateReservado ( Boolean reservado){
-//
-//    }
+
 
     public static Livro findById (int idLivro){
 
@@ -66,6 +63,19 @@ public class LivroDAO {
             if (idLivro == localLivro.getIdLivro()){
 
                 return localLivro;
+            }
+        }
+        return null;
+    }
+
+    public Livro findByAutor (String autor){
+
+        for (Livro localLivro: livros){
+
+            if (autor.equals(localLivro.getAutor()) ){
+
+                 return localLivro;
+
             }
         }
         return null;

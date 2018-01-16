@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <h:panelGrid>
+        <h:form>
+          <fieldset>
+              <legend>Pesquisa de Livro</legend>
+              <h:outputText value="Título do Livro" for="titulo_livro"/>
+              <h:inputText id="titulo_livro" value="#{livroBean.livro.titulo}"/>
+              <h:outputText value="Autor" for="autor_livro"/>
+              <h:inputText id="autor_livro" value="#{livroBean.livro.autor}"/>
+              <h:commandButton value="Buscar" action="#{livroBean.buscarLivrosPorAutor}"/>
+          </fieldset>
+          <fieldset>
+            <legend>Pesquisa</legend>
+            <h:dataTable id="livros-cadastrados" value="#{livroBean.listaBusca}" var="livro">
+                <h:column id="coluna1">
+                    <f:facet name ="header">
+                        <h:outputText value="ID Registro"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.idLivro}"/>
+                </h:column>
+                <h:column id="coluna2">
+                    <f:facet name="header">
+                        <h:outputText value="Título"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.titulo}"/>
+                </h:column>
+                <h:column id="coluna3">
+                    <f:facet name = "header">
+                        <h:outputText value="Autor"/>
+                    </f:facet>
+                    <h:outputText value="#{livro.autor}"/>
+                </h:column>
+            </h:dataTable>
+          </fieldset>
+        </h:form>
+    </h:panelGrid>
+</h:body>   
+   
+</html>

@@ -16,11 +16,14 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
 
+    private static List<Livro> listaBusca;
 
     @PostConstruct
     public void init(){
         livro = new Livro();
+        listaBusca = new ArrayList<>();
     }
+
 
     public Livro getLivro() {
         return livro;
@@ -34,8 +37,11 @@ public class LivroBean implements Serializable{
         return LivroDAO.list();
     }
 
-    public List<Livro> getLivrosAlugados() {
-        return LivroDAO.listarAlugados(livro.isAlugado());
+//    public List<Livro> getLivrosAlugados() {
+//        return LivroDAO.listarAlugados(livro.isAlugado());
+//    }
+    public List<Livro> getListaBusca() {
+        return listaBusca;
     }
 
     public void cadastrarLivro(){
@@ -69,6 +75,21 @@ public class LivroBean implements Serializable{
             }
         }
     }
+
+    public List<Livro> buscarLivrosPorAutor(){
+        for (Livro livro :LivroDAO.list()) {
+            if (livro.getAutor().equals(this.livro.getAutor())){
+                listaBusca.add(livro);
+            }
+
+        }
+        return listaBusca;
+    }
+
+    public List<Livro> listarBusca(){
+        return listaBusca;
+    }
+
 
     public void removerLivro(Livro livro){
         this.setLivro(livro);
