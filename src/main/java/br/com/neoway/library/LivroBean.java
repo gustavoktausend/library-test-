@@ -37,9 +37,6 @@ public class LivroBean implements Serializable{
         return LivroDAO.list();
     }
 
-//    public List<Livro> getLivrosAlugados() {
-//        return LivroDAO.listarAlugados(livro.isAlugado());
-//    }
     public List<Livro> getListaBusca() {
         return listaBusca;
     }
@@ -109,18 +106,26 @@ public class LivroBean implements Serializable{
         LivroDAO.update(livro);
     }
 
-    public void alugarLivro (Livro livro) {
-        if (!livro.isReservado()) {
-            if (!livro.isAlugado()) {
+    public void alugarLivro (Livro livro){
+        if(!livro.isReservado()) {
+            if(!livro.isAlugado()) {
                 if(LivroDAO.listarAlugadosPorUsuario().size() < 3) {
                     this.setLivro(livro);
                     this.livro.setAlugado(true);
                     this.livro = new Livro();
                     LivroDAO.addLivrosAlugar(livro);
-                }else { throw new RuntimeException("Limite de livros alugados alcançado");}
-            }else{ throw new RuntimeException("Livro Já alugado");}
-        }else{ throw new RuntimeException("Livro Reservado");}
+                }else{throw new RuntimeException("Limite de livros alugados alcançado");}
+            }else{throw new RuntimeException("Livro Já alugado");}
+        }else{throw new RuntimeException("Livro Reservado");}
     }
 
+    public void reservarLivro (Livro livro){
+        if (!livro.isReservado()) {
+            if(!livro.isAlugado()){
+                this.livro.setReservado(true);
+                this.livro = new Livro();
+            }
+        }
+    }
 
 }
