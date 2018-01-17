@@ -14,21 +14,26 @@ public class LivroDAO {
     private static List<Livro> livrosAlugados;
 
 
+
     static {
         livros = new ArrayList<>();
         livrosAlugados = new ArrayList<>();
+
     }
 
     public static void add(Livro livro){
         livro.setIdLivro(IdCount++);
         if (existeLivro(livro.getIdLivro())){
-            System.out.println("livro já existe");
+                System.out.println("livro já existe");
 
         }else{
-            livros.add(livro);
+                livros.add(livro);
 
         }
+    }
 
+    public static void addLivrosAlugar (Livro livro){
+        livrosAlugados.add(livro);
     }
 
     public static void remove(Livro livro){
@@ -41,20 +46,9 @@ public class LivroDAO {
         return livros;
     }
 
-
-
-    public static List<Livro> listarAlugados(Boolean alugado){
-        for (Livro localLivro: livros){
-            if (alugado == localLivro.isAlugado() ){
-
-                livrosAlugados.add(localLivro);
-                return livrosAlugados;
-            }
-        }
-        return null;
+    public static List<Livro> listarAlugadosPorUsuario(){
+        return livrosAlugados;
     }
-
-
 
     public static Livro findById (int idLivro){
 
@@ -63,19 +57,6 @@ public class LivroDAO {
             if (idLivro == localLivro.getIdLivro()){
 
                 return localLivro;
-            }
-        }
-        return null;
-    }
-
-    public Livro findByAutor (String autor){
-
-        for (Livro localLivro: livros){
-
-            if (autor.equals(localLivro.getAutor()) ){
-
-                 return localLivro;
-
             }
         }
         return null;

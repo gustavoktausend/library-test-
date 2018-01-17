@@ -89,7 +89,6 @@ public class LivroBean implements Serializable{
         return listaBusca;
     }
 
-
     public void removerLivro(Livro livro){
         this.setLivro(livro);
         System.out.println("Removendo Livro:" + this.livro.getTitulo()) ;
@@ -97,13 +96,11 @@ public class LivroBean implements Serializable{
         this.livro = new Livro();
     }
 
-
     public void alterarLivro(Livro livro) {
         this.setLivro(livro);
     }
 
     public String detalhesLivro(Livro livro) {
-
         this.setLivro(livro);
         return "detalhes_livro.xhtml";
     }
@@ -113,9 +110,16 @@ public class LivroBean implements Serializable{
     }
 
     public void alugarLivro (Livro livro) {
-        this.setLivro(livro);
-        this.livro.setAlugado(true);
-        this.livro = new Livro();
+        if (!livro.isReservado()) {
+            if (!livro.isAlugado()) {
+                if(LivroDAO.listarAlugadosPorUsuario().size() < 3) {
+                    this.setLivro(livro);
+                    this.livro.setAlugado(true);
+                    this.livro = new Livro();
+                    LivroDAO.addLivrosAlugar(livro);
+                }else { throw new RuntimeException("Limite de livros alugados alcançado");}
+            }else{ throw new RuntimeException("Livro Já alugado");}
+        }else{ throw new RuntimeException("Livro Reservado");}
     }
 
 

@@ -9,10 +9,13 @@ public class UsuarioDAO {
 
     public static int IdCountUser;
 
+    public static Usuario usuarioLogado;
+
     private static List<Usuario> usuarios;
 
     static {
         usuarios = new ArrayList<>();
+        usuarioLogado = new Usuario();
     }
 
     public static void add(Usuario usuario){
@@ -64,18 +67,23 @@ public class UsuarioDAO {
         return false;
     }
 
-
     public static void update(Usuario usuario){
 
                 Usuario usuarioEditado = findById(usuario.getIdUser());
-                usuarioEditado.setNome(usuario.getNome());
-                usuarioEditado.setPassword(usuario.getPassword());
-                usuarioEditado.setEmail(usuario.getEmail());
-                usuarioEditado.setTelefone(usuario.getTelefone());
-                usuarioEditado.setPerfil(usuario.getPerfil());
-                usuarioEditado.setData_nascimento(usuario.getData_nascimento());
-
+                if (usuarioEditado !=null) {
+                    usuarioEditado.setNome(usuario.getNome());
+                    usuarioEditado.setPassword(usuario.getPassword());
+                    usuarioEditado.setEmail(usuario.getEmail());
+                    usuarioEditado.setTelefone(usuario.getTelefone());
+                    usuarioEditado.setPerfil(usuario.getPerfil());
+                    usuarioEditado.setData_nascimento(usuario.getData_nascimento());
+                }
                 //referencia // obj // ponteiro e etc
 
     }
+
+    public static void setUsuarioLogado(Usuario usuario){
+        usuarioLogado = usuario;
+    }
+
 }

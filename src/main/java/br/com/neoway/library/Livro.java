@@ -3,7 +3,6 @@ import java.util.Objects;
 
 public class Livro {
 
-
     private int idLivro;
     private String titulo;
     private String editora;
@@ -12,12 +11,14 @@ public class Livro {
     private String edicao;
     private boolean reservado;
     private boolean alugado;
+    private String data_reserva;
+    private String data_cancelamento_reserva;
+    private String data_retirada;
+
 
 
     public Livro() {
-
     }
-
     public int getIdLivro() {
         return idLivro;
     }
@@ -42,8 +43,15 @@ public class Livro {
     public boolean isReservado() {
         return reservado;
     }
-
-
+    public String getData_reserva() {
+        return data_reserva;
+    }
+    public String getData_cancelamento_reserva() {
+        return data_cancelamento_reserva;
+    }
+    public String getData_retirada() {
+        return data_retirada;
+    }
 
     public void setReservado(boolean reservado) {
         this.reservado = reservado;
@@ -69,6 +77,16 @@ public class Livro {
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
     }
+    public void setData_reserva(String data_reserva) {
+        this.data_reserva = data_reserva;
+    }
+    public void setData_cancelamento_reserva(String data_cancelamento_reserva) {
+        this.data_cancelamento_reserva = data_cancelamento_reserva;
+    }
+    public void setData_retirada(String data_retirada) {
+        this.data_retirada = data_retirada;
+    }
+
 
     @Override
     public boolean equals(Object o) {

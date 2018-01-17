@@ -37,6 +37,10 @@ public class UsuarioBean implements Serializable{
         return UsuarioDAO.list();
     }
 
+    public Usuario getUsuarioLogado() {
+        return UsuarioDAO.usuarioLogado;
+    }
+
 
     public void cadastrarUsuario(){
         if (usuario.getPerfil().isEmpty()){
@@ -79,6 +83,7 @@ public class UsuarioBean implements Serializable{
         for (Usuario usuario : UsuarioDAO.list()) {
             if (usuario.getEmail().equals(this.usuario.getEmail()) && usuario.getPassword().equals(this.usuario.getPassword())){
                 System.out.println("Login realizado com sucesso");
+                UsuarioDAO.setUsuarioLogado(usuario);
                 if (usuario.getPerfil().equals("Administrador")){
                     return "crud_livro.xhtml";
                 }
