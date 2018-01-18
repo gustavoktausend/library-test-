@@ -3,21 +3,27 @@ package br.com.neoway.library.dao;
 import br.com.neoway.library.Livro;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class LivroDAO {
 
     private static int IdCount = 1;
 
+    private Date dataAtual = Calendar.getInstance().getTime();
+
     private static List<Livro> livros;
 
     private static List<Livro> livrosAlugados;
 
+    private static List<Livro> listaHistorico;
 
 
     static {
         livros = new ArrayList<>();
         livrosAlugados = new ArrayList<>();
+        listaHistorico = new ArrayList<>();
 
     }
 
@@ -32,13 +38,25 @@ public class LivroDAO {
         }
     }
 
-    public static void addLivrosAlugar (Livro livro){
+    public static void addLivrosAlugar(Livro livro){
+
         livrosAlugados.add(livro);
+    }
+
+    public static void addListaReservas(Livro livro){
+
+        listaHistorico.add(livro);
+
     }
 
     public static void remove(Livro livro){
 
         livros.remove(livro);
+    }
+
+    public static void remmoverLivroAlugar(Livro livro){
+
+        livrosAlugados.remove(livro);
     }
 
     public static List<Livro> list(){
@@ -47,10 +65,17 @@ public class LivroDAO {
     }
 
     public static List<Livro> listarAlugadosPorUsuario(){
+
         return livrosAlugados;
     }
 
-    public static Livro findById (int idLivro){
+    public static List<Livro> listarHistoricoReservas(){
+
+        return listaHistorico;
+
+    }
+
+    public static Livro findById(int idLivro){
 
         for (Livro localLivro: livros){
 
@@ -62,7 +87,7 @@ public class LivroDAO {
         return null;
     }
 
-    public static boolean existeLivro (int idLivro){
+    public static boolean existeLivro(int idLivro){
 
         for(Livro livroexiste: livros){
 

@@ -3,6 +3,8 @@ import br.com.neoway.library.dao.LivroDAO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -15,13 +17,15 @@ import javax.faces.bean.ViewScoped;
 public class LivroBean implements Serializable{
 
     private Livro livro;
-
-    public  List<Livro> listaBusca;
+    private Date dataAtual = Calendar.getInstance().getTime();
+    public  List<Livro> listaBuscaAutor;
+    public  List<Livro> listaBuscaTitulo;
 
     @PostConstruct
     public void init(){
         livro = new Livro();
-        listaBusca = new ArrayList<>();
+        listaBuscaAutor = new ArrayList<>();
+        listaBuscaTitulo= new ArrayList<>();
     }
 
 
@@ -38,7 +42,7 @@ public class LivroBean implements Serializable{
     }
 
     public List<Livro> getListaBusca() {
-        return listaBusca;
+        return listaBuscaAutor;
     }
 
     public void cadastrarLivro(){
@@ -74,16 +78,22 @@ public class LivroBean implements Serializable{
     }
 
     public void buscarLivrosPorAutor(){
-        for (Livro livro :LivroDAO.list()) {
+        for (Livro livro :LivroDAO.list()){
             if (livro.getAutor().equals(this.livro.getAutor())){
-                listaBusca.add(livro);
+                listaBuscaAutor.add(livro);
+                this.livro = new Livro();
             }
 
         }
     }
 
-    public List<Livro> listarBusca(){
-        return listaBusca;
+    public void buscarLivrosPorTitulo(){
+        for (Livro livro :LivroDAO.list()){
+            if(livro.getTitulo().equals(this.livro.getTitulo())){
+                listaBuscaTitulo.add(livro);
+                this.livro = new Livro();
+            }
+        }
     }
 
     public void removerLivro(Livro livro){
@@ -107,8 +117,8 @@ public class LivroBean implements Serializable{
     }
 
     public void alugarLivro (Livro livro){
-        if(!livro.isReservado()) {
-            if(!livro.isAlugado()) {
+        if(!livro.isReservado()){
+            if(!livro.isAlugado()){
                 if(LivroDAO.listarAlugadosPorUsuario().size() < 3) {
                     this.setLivro(livro);
                     this.livro.setAlugado(true);
@@ -119,12 +129,32 @@ public class LivroBean implements Serializable{
         }else{throw new RuntimeException("Livro Reservado");}
     }
 
-    public void reservarLivro (Livro livro){
-        if (!livro.isReservado()) {
+    public void reservarLivro(Livro livro){
+        if (!livro.isReservado()){
             if(!livro.isAlugado()){
                 this.livro.setReservado(true);
+                this.livro.setData_reserva(dataAtual);
+                LivroDAO.addListaReservas(livro);
                 this.livro = new Livro();
             }
+        }
+    }
+
+    public void cancelarReservaLivro(Livro livro){
+        if(livro.isReservado()){
+            this.livro.setReservado(false);
+            this.livro.setData_cancelamento_reserva(dataAtual);
+            this.livro = new Livro();
+        }
+    }
+
+    public void devoluçãoLivroAlugado(Livro livro){
+        if(livro.isReservado()){
+            this.setLivro(livro);
+            this.livro.setAlugado(false);
+            LivroDAO.remmoverLivroAlugar(livro);
+            this.livro.setData_devolucao(dataAtual);
+            this.livro = new Livro();
         }
     }
 

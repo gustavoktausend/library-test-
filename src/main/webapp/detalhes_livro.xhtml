@@ -20,8 +20,13 @@
               <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
               <h:outputLabel value="Edição:" for="edicao"/> <br></br>
               <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
-              <h:commandButton value="Editar" action="#{livroBean.confirmarAlteracaoLivro}" />
-              <h:commandButton value="Excluir" action="#{livroBean.removerLivro(livroBean.livro)}"/>
+              <h:outputLabel value="Status:" for="status"/><br></br>
+              <h:outputLabel id="status" value="#{livroBean.livro.status}"/><br></br>
+              <h:outputLabel value="Reservado?:" id="reservado"/> <br></br>
+              <h:outputLabel value="#{livroBean.livro.reservado}"/><br></br>
+              <h:outputLabel value="#{livroBean.livro.alugado}"/><br></br>
+              <h:commandButton value="Reservar" action="=#{livroBean.reservarLivro(livro)}"/>
+              <h:commandButton value="Alugar" action="#{livroBean.alugarLivro(livro)}"/>
           </fieldset>
         </h:form>
     </h:panelGrid>

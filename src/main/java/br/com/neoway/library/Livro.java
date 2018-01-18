@@ -1,4 +1,5 @@
 package br.com.neoway.library;
+import java.util.Date;
 import java.util.Objects;
 
 public class Livro {
@@ -11,9 +12,11 @@ public class Livro {
     private String edicao;
     private boolean reservado;
     private boolean alugado;
-    private String data_reserva;
-    private String data_cancelamento_reserva;
-    private String data_retirada;
+    private Date data_reserva;
+    private Date data_cancelamento_reserva;
+    private Date data_retirada;
+    private Date data_devolucao;
+    private String status;
 
 
 
@@ -43,14 +46,20 @@ public class Livro {
     public boolean isReservado() {
         return reservado;
     }
-    public String getData_reserva() {
+    public Date getData_reserva() {
         return data_reserva;
     }
-    public String getData_cancelamento_reserva() {
+    public Date getData_cancelamento_reserva() {
         return data_cancelamento_reserva;
     }
-    public String getData_retirada() {
+    public Date getData_retirada() {
         return data_retirada;
+    }
+    public String getStatus() {
+        return status;
+    }
+    public Date getData_devolucao() {
+        return data_devolucao;
     }
 
     public void setReservado(boolean reservado) {
@@ -77,14 +86,20 @@ public class Livro {
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
     }
-    public void setData_reserva(String data_reserva) {
+    public void setData_reserva(Date data_reserva) {
         this.data_reserva = data_reserva;
     }
-    public void setData_cancelamento_reserva(String data_cancelamento_reserva) {
+    public void setData_cancelamento_reserva(Date data_cancelamento_reserva) {
         this.data_cancelamento_reserva = data_cancelamento_reserva;
     }
-    public void setData_retirada(String data_retirada) {
+    public void setData_retirada(Date data_retirada) {
         this.data_retirada = data_retirada;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    public void setData_devolucao(Date data_devolucao) {
+        this.data_devolucao = data_devolucao;
     }
 
 
