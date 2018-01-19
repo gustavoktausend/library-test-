@@ -17,6 +17,7 @@ public class Livro {
     private Date data_retirada;
     private Date data_devolucao;
     private String status;
+    private String reservado_para;
 
 
 
@@ -61,6 +62,9 @@ public class Livro {
     public Date getData_devolucao() {
         return data_devolucao;
     }
+    public String getReservado_para() {
+        return reservado_para;
+    }
 
     public void setReservado(boolean reservado) {
         this.reservado = reservado;
@@ -100,6 +104,9 @@ public class Livro {
     }
     public void setData_devolucao(Date data_devolucao) {
         this.data_devolucao = data_devolucao;
+    }
+    public void setReservado_para(String reservado_para) {
+        this.reservado_para = reservado_para;
     }
 
 

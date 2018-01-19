@@ -19,14 +19,11 @@ public class LoginBean implements Serializable{
 
     private static List<Usuario> usuarios;
 
-
     @PostConstruct
     public void init(){
 
         usuario = new Usuario();
     }
-
-
 
     public int getFiltroId() {
 

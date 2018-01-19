@@ -14,7 +14,8 @@
               <h:inputText id="titulo_livro" value="#{livroBean.livro.titulo}"/>
               <h:outputText value="Autor" for="autor_livro"/>
               <h:inputText id="autor_livro" value="#{livroBean.livro.autor}"/>
-              <h:commandButton value="Buscar" action="#{livroBean.buscarLivrosPorAutor}"/>
+              <h:commandButton value="Buscar por Titulo" action="#{livroBean.buscarLivrosPorTitulo}"/>
+              <h:commandButton value="Buscar por Autor" action="#{livroBean.buscarLivrosPorAutor}"/>
           </fieldset>
           <fieldset>
             <legend>Pesquisa</legend>
@@ -38,9 +39,9 @@
                     <h:outputText value="#{livro.autor}"/>
                 </h:column>
                 <h:column id="coluna4">
-                    <f:facet name="header">
-                    </f:facet>
-                    <h:commandLink value="Detalhes" action="#{livroBean.detalhesLivro(livro)}"/>
+                    <f:facet name="header"/>
+                    <h:commandButton value="Detalhes" action="#{livroBean.detalhesLivro}">
+                    </h:commandButton>
                 </h:column>
             </h:dataTable>
           </fieldset>

@@ -19,11 +19,11 @@ public class LivroDAO {
 
     private static List<Livro> listaHistorico;
 
-
     static {
         livros = new ArrayList<>();
         livrosAlugados = new ArrayList<>();
         listaHistorico = new ArrayList<>();
+
 
     }
 

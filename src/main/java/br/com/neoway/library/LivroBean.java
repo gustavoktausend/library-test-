@@ -1,5 +1,6 @@
 package br.com.neoway.library;
 import br.com.neoway.library.dao.LivroDAO;
+import br.com.neoway.library.dao.UsuarioDAO;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class LivroBean implements Serializable{
 
     private Livro livro;
     private Date dataAtual = Calendar.getInstance().getTime();
-    public  List<Livro> listaBuscaAutor;
-    public  List<Livro> listaBuscaTitulo;
+    private List<Livro> listaBuscaAutor;
+    private List<Livro> listaBuscaTitulo;
 
     @PostConstruct
     public void init(){
@@ -27,7 +28,6 @@ public class LivroBean implements Serializable{
         listaBuscaAutor = new ArrayList<>();
         listaBuscaTitulo= new ArrayList<>();
     }
-
 
     public Livro getLivro() {
         return livro;
@@ -107,7 +107,7 @@ public class LivroBean implements Serializable{
         this.setLivro(livro);
     }
 
-    public String detalhesLivro(Livro livro) {
+    public String detalhesLivro() {
         this.setLivro(livro);
         return "detalhes_livro.xhtml";
     }
@@ -135,6 +135,7 @@ public class LivroBean implements Serializable{
                 this.livro.setReservado(true);
                 this.livro.setData_reserva(dataAtual);
                 LivroDAO.addListaReservas(livro);
+                this.livro.setReservado_para(UsuarioDAO.retornaNomeUsuarioLogado());
                 this.livro = new Livro();
             }
         }
@@ -144,6 +145,7 @@ public class LivroBean implements Serializable{
         if(livro.isReservado()){
             this.livro.setReservado(false);
             this.livro.setData_cancelamento_reserva(dataAtual);
+            this.livro.setReservado_para("");
             this.livro = new Livro();
         }
     }
@@ -157,5 +159,7 @@ public class LivroBean implements Serializable{
             this.livro = new Livro();
         }
     }
+
+
 
 }

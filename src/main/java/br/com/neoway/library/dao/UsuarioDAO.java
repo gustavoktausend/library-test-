@@ -86,4 +86,8 @@ public class UsuarioDAO {
         usuarioLogado = usuario;
     }
 
+    public static String retornaNomeUsuarioLogado (){
+        return usuarioLogado.getNome();
+    }
+
 }

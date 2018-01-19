@@ -22,9 +22,6 @@ public class UsuarioBean implements Serializable{
         usuario = new Usuario();
     }
 
-
-
-
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -40,7 +37,6 @@ public class UsuarioBean implements Serializable{
     public Usuario getUsuarioLogado() {
         return UsuarioDAO.usuarioLogado;
     }
-
 
     public void cadastrarUsuario(){
         if (usuario.getPerfil().isEmpty()){
@@ -106,6 +102,5 @@ public class UsuarioBean implements Serializable{
     public String retornoLogin(){
         return "login.xhtml";
     }
-
 
     }
