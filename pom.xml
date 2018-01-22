@@ -37,6 +37,7 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!--Dependencia do Demonio-->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>

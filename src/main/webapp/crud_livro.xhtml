@@ -26,57 +26,56 @@
                 <p:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
                 <p:outputLabel value="Edição:" for="edicao"/> <br></br>
                 <p:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
-                <p:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}"/>
-                <p:commandButton value="Editar" action="#{livroBean.confirmarAlteracaoLivro}" />
-                <p:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
-                <p:commandButton value="Excluir" /><br></br>
+                <p:commandButton value="Cadastrar" ajax="false" action="#{livroBean.cadastrarLivro}"/>
+                <p:commandButton value="Editar" ajax="false" action="#{livroBean.confirmarAlteracaoLivro}" />
+                <p:commandButton value="Buscar" ajax="false" action="#{livroBean.buscarLivro}"/>
             </p:fieldset>
-          <fieldset>
+          <p:fieldset>
                 <legend>Livros Cadastrados</legend>
-                <h:dataTable id="livros-cadastrados" value="#{livroBean.livros}" var="livro">
-                    <h:column id="coluna1">
+                <p:dataTable id="livros-cadastrados" value="#{livroBean.livros}" var="livro">
+                    <p:column id="coluna1">
                         <f:facet name ="header">
                             <h:outputText value="ID Registro"/>
                         </f:facet>
                         <h:outputText value="#{livro.idLivro}"/>
-                    </h:column>
-                    <h:column id="coluna2">
+                    </p:column>
+                    <p:column id="coluna2">
                         <f:facet name="header">
                             <h:outputText value="Título"/>
                         </f:facet>
                         <h:outputText value="#{livro.titulo}"/>
-                    </h:column>
-                    <h:column id="coluna3">
+                    </p:column>
+                    <p:column id="coluna3">
                     <f:facet name = "header">
                         <h:outputText value="Autor"/>
                     </f:facet>
                     <h:outputText value="#{livro.autor}"/>
-                    </h:column>
-                    <h:column id="coluna4">
+                    </p:column>
+                    <p:column id="coluna4">
                         <f:facet name = "header">
                             <h:outputText value="Remover"/>
                         </f:facet>
                         <h:commandLink value="Remove" action="#{livroBean.removerLivro(livro)}"/>
-                    </h:column>
-                    <h:column id="coluna5">
+                    </p:column>
+                    <p:column id="coluna5">
                         <f:facet name = "header">
                         </f:facet>
                         <h:commandLink value="Alterar" action="#{livroBean.alterarLivro(livro)}"/>
-                    </h:column>
-                    <h:column id="coluna6">
+                    </p:column>
+                    <p:column id="coluna6">
                         <f:facet name="header">
                         </f:facet>
                         <h:commandLink value="Alugar livro" action="#{livroBean.alugarLivro(livro)}"/>
-                    </h:column>
-                    <h:column id="coluna7">
+                    </p:column>
+                    <p:column id="coluna7">
                         <f:facet name="header">
                             <h:outputText value="Alugado?"/>
                         </f:facet>
                         <h:outputText value="#{livro.alugado}"/>
-                    </h:column>
+                    </p:column>
 
-                </h:dataTable>
-            </fieldset>
+                </p:dataTable>
+            </p:fieldset>
         </h:form>
     </h:panelGrid>
     <h:outputText value="#{usuarioBean.usuarioLogado.nome}" id="usuario_logado"/><br></br>
