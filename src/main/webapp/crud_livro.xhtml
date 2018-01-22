@@ -6,27 +6,31 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+
+</h:head>
+
 <h:body>
     <h1>CRUD Livro</h1>
     <h:panelGrid>
         <h:form>
-            <fieldset id="campos_cadastro">
+            <p:fieldset id="campos_cadastro">
                 <legend>Novo Livro</legend>
-                <h:outputLabel value="Título:" for="titulo"/> <br></br>
-                <h:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
-                <h:outputLabel value="Editora:" for="editora"/><br></br>
-                <h:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
-                <h:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>
-                <h:inputText id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
-                <h:outputLabel value="Autor:" for="autor"/> <br></br>
-                <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
-                <h:outputLabel value="Edição:" for="edicao"/> <br></br>
-                <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
-                <h:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}"/>
-                <h:commandButton value="Editar" action="#{livroBean.confirmarAlteracaoLivro}" />
-                <h:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
-                <h:commandButton value="Excluir" /><br></br>
-            </fieldset>
+                <p:outputLabel value="Título:" for="titulo"/> <br></br>
+                <p:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
+                <p:outputLabel value="Editora:" for="editora"/><br></br>
+                <p:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
+                <p:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>
+                <p:calendar id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
+                <p:outputLabel value="Autor:" for="autor"/> <br></br>
+                <p:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
+                <p:outputLabel value="Edição:" for="edicao"/> <br></br>
+                <p:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
+                <p:commandButton value="Cadastrar" action="#{livroBean.cadastrarLivro}"/>
+                <p:commandButton value="Editar" action="#{livroBean.confirmarAlteracaoLivro}" />
+                <p:commandButton value="Buscar" action="#{livroBean.buscarLivro}"/>
+                <p:commandButton value="Excluir" /><br></br>
+            </p:fieldset>
           <fieldset>
                 <legend>Livros Cadastrados</legend>
                 <h:dataTable id="livros-cadastrados" value="#{livroBean.livros}" var="livro">
