@@ -14,18 +14,15 @@ public class Usuario {
 
     public Usuario() {  }
 
+    public String getPerfil() {
+        return perfil;
+    }
 
     public int getIdUser() {
         return idUser;
     }
     public String getNome() {
         return nome;
-    }
-    public double getTelefone() {
-        return telefone;
-    }
-    public String getPerfil() {
-        return perfil;
     }
     public String getEmail() {
         return email;
@@ -35,6 +32,10 @@ public class Usuario {
     }
     public String getPassword() {
         return password;
+    }
+
+    public double getTelefone() {
+        return telefone;
     }
 
     public void setIdUser(int idUser) {
@@ -58,5 +59,4 @@ public class Usuario {
     public void setPassword(String edicao) {
         this.password = edicao;
     }
-
 }

@@ -17,6 +17,11 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 public class LivroBean implements Serializable{
 
+
+
+
+
+    private Integer idLivro;
     private Livro livro;
     private Date dataAtual = Calendar.getInstance().getTime();
     private List<Livro> listaBuscaAutor;
@@ -37,12 +42,20 @@ public class LivroBean implements Serializable{
         this.livro = livro;
     }
 
+    public void setIdLivro(Integer idLivro) {
+        this.idLivro = idLivro;
+    }
+
     public List<Livro> getLivros() {
         return LivroDAO.list();
     }
 
     public List<Livro> getListaBusca() {
         return listaBuscaAutor;
+    }
+
+    public Integer getIdLivro() {
+        return idLivro;
     }
 
     public void cadastrarLivro(){
@@ -107,8 +120,8 @@ public class LivroBean implements Serializable{
         this.setLivro(livro);
     }
 
-    public String detalhesLivro() {
-        this.setLivro(livro);
+    public String detalhesLivro(int idLivro) {
+        this.setLivro(LivroDAO.findById(idLivro));
         return "detalhes_livro.xhtml";
     }
 
@@ -159,6 +172,12 @@ public class LivroBean implements Serializable{
             this.livro = new Livro();
         }
     }
+
+    public void carregarLivro(){
+        this.livro = LivroDAO.findById(idLivro);
+    }
+
+
 
 
 

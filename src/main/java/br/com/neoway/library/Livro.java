@@ -4,7 +4,9 @@ import java.util.Objects;
 
 public class Livro {
 
+
     private int idLivro;
+
     private String titulo;
     private String editora;
     private String autor;

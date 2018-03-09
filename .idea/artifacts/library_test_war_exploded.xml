@@ -7,13 +7,14 @@
           <element id="module-output" name="library-test" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.primefaces:primefaces:4.0" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.0" />
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.14" />
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.14" />
           <element id="library" level="project" name="Maven: javax:javaee-api:unknown" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
           <element id="library" level="project" name="Maven: com.sun.el:el-ri:1.0" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
         </element>
       </element>
       <element id="directory" name="META-INF">
