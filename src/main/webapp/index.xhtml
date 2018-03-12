@@ -7,24 +7,25 @@
       xmlns:p="http://primefaces.org/ui" >
 
 
+<h:head>
+
+</h:head>
+
 <h:body>
-    <h1>Login de Acesso Library_Test</h1>
+    <h1>Acesso ao Library Test</h1>
     <h:panelGrid columns="2">
         <h:form>
-            <fieldset>
-            <Legend>Login</Legend>
-            <h:outputLabel value="Id Login" for="login"/>
-            <h:inputText id="login" value="#{usuarioBean.usuario.idUser}"/>
-            <h:outputLabel value="Senha" for="password"/>
-            <h:inputSecret id="password" value="#{usuarioBean.usuario.password}"/>
-            <h:commandButton value="Login" action="#{loginBean.loginUsuario}"/>
-            </fieldset>
+            <p:fieldset legend="Login">
+                <h:outputLabel value="Login: " for="email"/>
+                <p:inputText id="email" value="#{usuarioBean.usuario.email}"/>
+                <h:outputLabel value="Senha: " for="password"/>
+                <p:password id="password" value="#{usuarioBean.usuario.password}"/>
+                <p:commandButton value="Login" action="#{usuarioBean.loginUsuario}"/>
+                <p:commandButton value="Cadastre-se" action="#{usuarioBean.novoUsuarioCadastrar}"/>
+            </p:fieldset>
         </h:form>
     </h:panelGrid>
-
-
-
-
 </h:body>
+
    
 </html>

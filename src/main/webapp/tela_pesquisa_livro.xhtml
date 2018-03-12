@@ -23,6 +23,9 @@
               <p:commandButton value="Buscar por Titulo" ajax="false" action="#{livroBean.buscarLivrosPorTitulo}"/>
               <p:commandButton value="Buscar por Autor" ajax="false" action="#{livroBean.buscarLivrosPorAutor}"/>
           </p:fieldset>
+
+
+
           <p:fieldset legend="Livros Cadastrados" style="margin-bottom: 20px">
             <p:dataTable id="livros-cadastrados" value="#{livroBean.listaBusca}" var="livro">
                 <p:column id="coluna1">

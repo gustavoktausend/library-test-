@@ -24,14 +24,12 @@ public class LivroBean implements Serializable{
     private Integer idLivro;
     private Livro livro;
     private Date dataAtual = Calendar.getInstance().getTime();
-    private List<Livro> listaBuscaAutor;
-    private List<Livro> listaBuscaTitulo;
+    private List<Livro> listaBusca;
 
     @PostConstruct
     public void init(){
         livro = new Livro();
-        listaBuscaAutor = new ArrayList<>();
-        listaBuscaTitulo= new ArrayList<>();
+        listaBusca = new ArrayList<>();
     }
 
     public Livro getLivro() {
@@ -51,7 +49,7 @@ public class LivroBean implements Serializable{
     }
 
     public List<Livro> getListaBusca() {
-        return listaBuscaAutor;
+        return listaBusca;
     }
 
     public Integer getIdLivro() {
@@ -93,7 +91,7 @@ public class LivroBean implements Serializable{
     public void buscarLivrosPorAutor(){
         for (Livro livro :LivroDAO.list()){
             if (livro.getAutor().equals(this.livro.getAutor())){
-                listaBuscaAutor.add(livro);
+                listaBusca.add(livro);
                 this.livro = new Livro();
             }
 
@@ -103,7 +101,7 @@ public class LivroBean implements Serializable{
     public void buscarLivrosPorTitulo(){
         for (Livro livro :LivroDAO.list()){
             if(livro.getTitulo().equals(this.livro.getTitulo())){
-                listaBuscaTitulo.add(livro);
+                listaBusca.add(livro);
                 this.livro = new Livro();
             }
         }
