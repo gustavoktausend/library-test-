@@ -10,16 +10,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 @RequestScoped
 @ManagedBean
 public class LivroBean implements Serializable{
-
-
-
-
 
     private Integer idLivro;
     private Livro livro;
@@ -28,8 +25,25 @@ public class LivroBean implements Serializable{
 
     @PostConstruct
     public void init(){
-        livro = new Livro();
+        String idLivro = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idLivro");
+
+
+        if(idLivro != null){
+            livro = LivroDAO.findById(Integer.parseInt(idLivro));
+        }else{
+            livro = new Livro();
+        }
+
         listaBusca = new ArrayList<>();
+
+
+        Livro livro1 = new Livro();
+
+        livro1.setTitulo("titulo");
+        livro1.setAutor("autor");
+        livro1.setEditora("editora");
+        livro1.setData_publicacao("21/12/2000");
+        LivroDAO.add(livro1);
     }
 
     public Livro getLivro() {
@@ -118,11 +132,6 @@ public class LivroBean implements Serializable{
         this.setLivro(livro);
     }
 
-    public String detalhesLivro(int idLivro) {
-        this.setLivro(LivroDAO.findById(idLivro));
-        return "detalhes_livro.xhtml";
-    }
-
     public void confirmarAlteracaoLivro(){
         LivroDAO.update(livro);
     }
@@ -140,17 +149,17 @@ public class LivroBean implements Serializable{
         }else{throw new RuntimeException("Livro Reservado");}
     }
 
-    public void reservarLivro(Livro livro){
-        if (!livro.isReservado()){
-            if(!livro.isAlugado()){
-                this.livro.setReservado(true);
-                this.livro.setData_reserva(dataAtual);
-                LivroDAO.addListaReservas(livro);
-                this.livro.setReservado_para(UsuarioDAO.retornaNomeUsuarioLogado());
-                this.livro = new Livro();
-            }
-        }
-    }
+//    public void reservarLivro(Livro livro){
+//        if (!livro.isReservado()){
+//            if(!livro.isAlugado()){
+//                this.livro.setReservado(true);
+//                this.livro.setData_reserva(dataAtual);
+//                LivroDAO.addListaReservas(livro);
+//                this.livro.setReservado_para(UsuarioDAO.retornaNomeUsuarioLogado());
+//                this.livro = new Livro();
+//            }
+//        }
+//    }
 
     public void cancelarReservaLivro(Livro livro){
         if(livro.isReservado()){
@@ -174,8 +183,6 @@ public class LivroBean implements Serializable{
     public void carregarLivro(){
         this.livro = LivroDAO.findById(idLivro);
     }
-
-
 
 
 

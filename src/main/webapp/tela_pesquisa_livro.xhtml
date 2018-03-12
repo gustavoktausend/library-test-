@@ -24,10 +24,11 @@
               <p:commandButton value="Buscar por Autor" ajax="false" action="#{livroBean.buscarLivrosPorAutor}"/>
           </p:fieldset>
 
-
-
-          <p:fieldset legend="Livros Cadastrados" style="margin-bottom: 20px">
-            <p:dataTable id="livros-cadastrados" value="#{livroBean.listaBusca}" var="livro">
+            <p:fieldset legend="Livros Cadastrados" style="margin-bottom: 20px">
+                <p:dataTable id="livros-cadastrados" var="livro" value="#{livroBean.listaBusca}">
+                <f:facet name="header">
+                    Basic
+                </f:facet>
                 <p:column id="coluna1">
                     <f:facet name ="header">
                         <h:outputText value="ID Registro"/>
@@ -48,10 +49,40 @@
                 </p:column>
                 <p:column id="coluna4">
                     <f:facet name="header"/>
-                    <p:commandButton value="Detalhes" action="#{livroBean.detalhesLivro(livro.idLivro)}" ajax="false">
-                        <f:param name="idLivro" value="#{livroBean.idLivro}"/>
-                    </p:commandButton>
+                    <p:button title="Detalhes" value="Detalhes" outcome="detalhes_livro" >
+                        <f:param value="#{livro.idLivro}" name="idLivro"/>
+                    </p:button>
                 </p:column>
+
+
+
+          <!--TESTE  -->
+
+            <!--<p:dataTable id="livros-cadastrados" value="#{livroBean.listaBusca}" var="livro">-->
+                <!--<p:column id="coluna1">-->
+                    <!--<f:facet name ="header">-->
+                        <!--<h:outputText value="ID Registro"/>-->
+                    <!--</f:facet>-->
+                    <!--<h:outputText value="#{livro.idLivro}"/>-->
+                <!--</p:column>-->
+                <!--<p:column id="coluna2">-->
+                    <!--<f:facet name="header">-->
+                        <!--<h:outputText value="Título"/>-->
+                    <!--</f:facet>-->
+                    <!--<h:outputText value="#{livro.titulo}"/>-->
+                <!--</p:column>-->
+                <!--<p:column id="coluna3">-->
+                    <!--<f:facet name = "header">-->
+                        <!--<h:outputText value="Autor"/>-->
+                    <!--</f:facet>-->
+                    <!--<h:outputText value="#{livro.autor}"/>-->
+                <!--</p:column>-->
+                <!--<p:column id="coluna4">-->
+                    <!--<f:facet name="header"/>-->
+                    <!--<p:commandButton value="Detalhes" action="#{livroBean.detalhesLivro(livro.idLivro)}" ajax="false">-->
+                        <!--<f:param name="idLivro" value="#{livroBean.idLivro}"/>-->
+                    <!--</p:commandButton>-->
+                <!--</p:column>-->
             </p:dataTable>
           </p:fieldset>
         </h:form>
