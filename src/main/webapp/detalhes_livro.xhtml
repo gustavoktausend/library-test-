@@ -6,27 +6,30 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-<h:body>
+<h:head>
+</h:head>
+
+
+ <h:body>
     <h:panelGrid>
         <h:form>
-          <fieldset>
-              <legend>Detalhes do Livro</legend>
+          <p:fieldset legend="Detalhes Livro">
               <h:outputLabel value="Título:" for="titulo"/> <br></br>
-              <h:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
+              <p:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
               <h:outputLabel value="Editora:" for="editora"/><br></br>
-              <h:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
+              <p:inputText   id="editora" value="#{livroBean.livro.editora}"/><br></br>
               <h:outputLabel value="Ano de publicação" for="ano_publicacao"/><br></br>
-              <h:inputText id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
+              <p:inputText id="ano_publicacao" value="#{livroBean.livro.data_publicacao}" /><br></br>
               <h:outputLabel value="Autor:" for="autor"/> <br></br>
-              <h:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
+              <p:inputText id="autor" value="#{livroBean.livro.autor}"/> <br></br>
               <h:outputLabel value="Edição:" for="edicao"/> <br></br>
-              <h:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
+              <p:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
               <h:outputLabel value="Status:" for="status"/><br></br>
               <h:outputLabel id="status" value="#{livroBean.livro.status}"/><br></br>
-              <h:outputLabel value="Reservado?:" id="reservado"/> <br></br>
-          </fieldset>
+              <h:outputLabel value="Reservado?" id="reservado"/> <br></br>
+          </p:fieldset>
         </h:form>
     </h:panelGrid>
-</h:body>   
+ </h:body>
    
 </html>

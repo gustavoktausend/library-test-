@@ -37,12 +37,15 @@ public class LivroBean implements Serializable{
         listaBusca = new ArrayList<>();
 
 
+
+
         Livro livro1 = new Livro();
 
         livro1.setTitulo("titulo");
         livro1.setAutor("autor");
         livro1.setEditora("editora");
         livro1.setData_publicacao("21/12/2000");
+        livro1.setReservado(true);
         LivroDAO.add(livro1);
     }
 
@@ -60,6 +63,10 @@ public class LivroBean implements Serializable{
 
     public List<Livro> getLivros() {
         return LivroDAO.list();
+    }
+
+    public List<Livro> getLivrosReservados() {
+        return LivroDAO.listarTodosReservados();
     }
 
     public List<Livro> getListaBusca() {
@@ -92,6 +99,7 @@ public class LivroBean implements Serializable{
         livro = new Livro();
 
     }
+
 
     public void buscarLivro(){
         for (Livro livro : LivroDAO.list()) {

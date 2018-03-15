@@ -5,12 +5,17 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+</h:head>
+
+
 <h:body>
     <h1>Novo Usuário</h1>
     <h:panelGrid>
         <h:form>
-            <fieldset id="campos_cadastro">
-                <legend>Novo Usuário</legend>
+            <p:fieldset value="Novo Usuário" id="campos_cadastro">
                 <h:outputLabel value="Nome:" for="nome"/> <br></br>
                 <h:inputText   id="nome" value="#{usuarioBean.usuario.nome}"/><br></br>
                 <h:outputLabel value="Senha:" for="senha"/><br></br>
@@ -26,7 +31,7 @@
                 </h:selectOneRadio><br></br>
                 <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/>
                 <h:commandButton value="Voltar" action="#{usuarioBean.retornoLogin}"/>
-            </fieldset>
+            </p:fieldset>
         </h:form>
     </h:panelGrid>
 </h:body>   

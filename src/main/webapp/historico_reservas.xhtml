@@ -5,11 +5,15 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+
 <h:body>
     <h:panelGrid>
         <h:form>
-          <fieldset>
-              <legend>Administrador - Histórico de Reservas</legend>
+          <p:fieldset legend="Administrador - Histórico de Reservas">
             <h:dataTable id="historico_reservas" value="#{livroBean.livrosAlugados}" var="livro">
                 <h:column id="coluna1">
                     <f:facet name ="header">
@@ -30,7 +34,7 @@
                     <h:outputText value="#{livro.autor}"/>
                 </h:column>
             </h:dataTable>
-          </fieldset>
+          </p:fieldset>
 
 
         </h:form>

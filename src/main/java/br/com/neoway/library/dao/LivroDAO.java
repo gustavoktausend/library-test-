@@ -23,8 +23,6 @@ public class LivroDAO {
         livros = new ArrayList<>();
         livrosAlugados = new ArrayList<>();
         listaHistorico = new ArrayList<>();
-
-
     }
 
     public static void add(Livro livro){
@@ -41,12 +39,6 @@ public class LivroDAO {
     public static void addLivrosAlugar(Livro livro){
 
         livrosAlugados.add(livro);
-    }
-
-    public static void addListaReservas(Livro livro){
-
-        listaHistorico.add(livro);
-
     }
 
     public static void remove(Livro livro){
@@ -75,6 +67,21 @@ public class LivroDAO {
 
     }
 
+    public static List<Livro> listarTodosReservados(){
+
+        List<Livro> reservados = new ArrayList<>();
+        for (Livro localLivro:livros){
+
+            if (localLivro.isReservado()){
+                reservados.add(localLivro);
+            }
+        }
+
+
+        return reservados;
+
+    }
+
     public static Livro findById(int idLivro){
 
         for (Livro localLivro: livros){
@@ -87,7 +94,7 @@ public class LivroDAO {
         return null;
     }
 
-    public static boolean existeLivro(int idLivro){
+    private static boolean existeLivro(int idLivro){
 
         for(Livro livroexiste: livros){
 

@@ -5,19 +5,74 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:body>
-    <h:panelGrid>
-        <h:form>
-          <fieldset>
-              <legend>Administrador</legend>
-            <h:commandLink value ="CRUD Usuário" action=""/> <br></br>
-            <h:commandLink value ="CRUD Livro" action="" /> <br></br>
-            <h:commandLink value = "Histórico de Reservas" action=""/><br></br>
-          </fieldset>
+<h:head>
 
+</h:head>
+
+<p:layout fullPage="true">
+
+    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+        <p:graphicImage library="img" name="logo.png" />
+        <h1>Library Test</h1>
+
+    </p:layoutUnit>
+
+    <p:layoutUnit position="west" size="230" header="Library Test" resizable="true" closable="true" collapsible="true">
+        <h:form>
+            <p:menu>
+                    <p:menuitem value="Cadastro de Usuário" outcome="crud_usuario"/>
+                    <p:menuitem value="Cadastro de Livro" outcome="crud_livro" />
+                    <p:menuitem value="Pesquisa de Livro" outcome="tela_pesquisa_livro"/>
+
+            </p:menu>
+        </h:form>
+    </p:layoutUnit>
+
+    <p:layoutUnit position="center">
+        <h:form>
+            <p:fieldset legend="Livros Reservados"/>
+                <p:dataTable id="livros-reservados" var="livro" value="#{livroBean.livrosReservados}" rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                    <f:facet name="Downloads">
+                        <h:commandLink value="Export">
+                            <p:dataExporter type="xls" target="livros-reservados" fileName="reservados" />
+                            <p>Download .xls</p>
+                        </h:commandLink>
+                    </f:facet>
+                    <p:column id="coluna1">
+                        <f:facet name ="header">
+                            <h:outputText value="ID Registro"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.idLivro}"/>
+                    </p:column>
+                    <p:column id="coluna2">
+                        <f:facet name="header">
+                            <h:outputText value="Título"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.titulo}"/>
+                    </p:column>
+                    <p:column id="coluna3">
+                        <f:facet name = "header">
+                            <h:outputText value="Autor"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.autor}"/>
+                    </p:column>
+                    <p:column id="coluna4">
+                        <f:facet name="header">
+                            <h:outputText value="Reservado?"/>
+                        </f:facet>
+                        <h:outputText value="#{livro.reservado}"/>
+                    </p:column>
+                </p:dataTable>
+            <h:commandLink value="EXPORT">
+                <p:dataExporter type="xls" target="livros-reservados" fileName="Teste"/>
+            </h:commandLink>
 
         </h:form>
-    </h:panelGrid>
-</h:body>   
+    </p:layoutUnit>
+
+</p:layout>
    
 </html>
