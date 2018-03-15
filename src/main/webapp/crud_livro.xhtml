@@ -10,12 +10,28 @@
 
 </h:head>
 
-<h:body>
-    <h1>CRUD Livro</h1>
-    <h:panelGrid>
+<p:layout fullPage="true">
+
+    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+    <p:graphicImage library="img" name="logo.png" />
+
+</p:layoutUnit>
+
+    <p:layoutUnit position="west" size="230" header="Library Test" resizable="true" closable="true" collapsible="true">
+    <h:form>
+        <p:menu>
+            <p:menuitem value="Cadastro de Usuário" outcome="crud_usuario"/>
+            <p:menuitem value="Cadastro de Livro" outcome="crud_livro" />
+            <p:menuitem value="Pesquisa de Livro" outcome="tela_pesquisa_livro"/>
+
+        </p:menu>
+    </h:form>
+</p:layoutUnit>
+
+    <p:layoutUnit position="center">
+
         <h:form>
-            <p:fieldset id="campos_cadastro">
-                <legend>Novo Livro</legend>
+            <p:fieldset id="campos_cadastro" legend="Cadastro de Livro">
                 <p:outputLabel value="Título:" for="titulo"/> <br></br>
                 <p:inputText   id="titulo" value="#{livroBean.livro.titulo}"/><br></br>
                 <p:outputLabel value="Editora:" for="editora"/><br></br>
@@ -77,8 +93,8 @@
                 </p:dataTable>
             </p:fieldset>
         </h:form>
-    </h:panelGrid>
-    <h:outputText value="#{usuarioBean.usuarioLogado.nome}" id="usuario_logado"/><br></br>
-</h:body>   
+    </p:layoutUnit>
+
+</p:layout>
    
 </html>

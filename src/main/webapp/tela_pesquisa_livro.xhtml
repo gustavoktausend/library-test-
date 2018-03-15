@@ -12,9 +12,26 @@
 <h:head>
 
 </h:head>
-<h:body>
-    <h:panelGrid>
+<p:layout fullPage="true">
+
+    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+        <p:graphicImage library="img" name="logo.png" />
+
+    </p:layoutUnit>
+
+    <p:layoutUnit position="west" size="230" header="Library Test" resizable="true" closable="true" collapsible="true">
         <h:form>
+            <p:menu>
+                <p:menuitem value="Cadastro de Usuário" outcome="crud_usuario"/>
+                <p:menuitem value="Cadastro de Livro" outcome="crud_livro" />
+                <p:menuitem value="Pesquisa de Livro" outcome="tela_pesquisa_livro"/>
+
+            </p:menu>
+        </h:form>
+    </p:layoutUnit>
+
+    <p:layoutUnit position="center">
+            <h:form>
           <p:fieldset legend="Pesquisa De Livro" toggleable="true" toggleSpeed="500" style="margin-bottom: 20px">
               <h:outputText value="Título do Livro" for="titulo_livro"/>
               <p:inputText id="titulo_livro" value="#{livroBean.livro.titulo}"/>
@@ -56,7 +73,8 @@
             </p:dataTable>
           </p:fieldset>
         </h:form>
-    </h:panelGrid>
-</h:body>   
+    </p:layoutUnit>
+</p:layout>
+
    
 </html>
