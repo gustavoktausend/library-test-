@@ -5,30 +5,50 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
 <h:body>
-    <h1>CRUD Usuário</h1>
-    <h:panelGrid>
+    <p:layout fullPage="true">
+
+    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+        <p:graphicImage library="img" name="logo.png" />
+
+    </p:layoutUnit>
+
+    <p:layoutUnit position="west" size="230" header="Library Test" resizable="true" closable="true" collapsible="true">
         <h:form>
-          <fieldset>
-              <legend>Novo Usuário</legend>
-            <h:outputLabel value="Nome:" for="nome"/> <br></br>
-            <h:inputText   id="nome" value="#{usuarioBean.usuario.idUser}"/><br></br>
-            <h:outputLabel value="Senha:" for="senha"/> <br></br>
-            <h:inputSecret   id="senha" value="#{usuarioBean.usuario.password}"/> <br></br>
-            <h:outputLabel value="Telefone:" for="telefone"/><br></br>
-            <h:inputText   id="telefone" value="#{usuarioBean.usuario.telefone}"/><br></br>
-            <h:outputLabel value="Perfil:" for="perfil"/><br></br>
-            <h:selectOneRadio id="perfil" value = "#{usuarioBean.usuario.perfil}">
-                  <f:selectItem itemValue = "1" itemLabel = "Administrador" />
-                  <f:selectItem itemValue = "2" itemLabel = "Comum" />
-            </h:selectOneRadio><br></br>
-            <h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/><br></br>
-            <h:commandButton value="Consultar" action="#{usuarioBean.buscarUsuario}" /> <br></br>
-            <h:commandButton value="Editar" action="#{usuarioBean.editarUsuario}" /> <br></br>
-            <h:commandButton value="Excluir" action="#{usuarioBean.deletarUsuario}" /><br></br>
-          </fieldset>
+            <p:menu>
+                <p:menuitem value="Cadastro de Usuário" disabled="true" outcome="crud_usuario"/>
+                <p:menuitem value="Cadastro de Livro" disabled="true" outcome="crud_livro" />
+                <p:menuitem value="Pesquisa de Livro" disabled="true" outcome="tela_pesquisa_livro"/>
+
+            </p:menu>
         </h:form>
-    </h:panelGrid>
-</h:body>   
-   
+    </p:layoutUnit>
+
+    <p:layoutUnit position="center">
+            <h:form>
+            <p:fieldset id="campos_cadastro" legend="Cadastro de Novo Usuário">
+                <p:outputLabel value="Nome:" for="nome"/> <br></br>
+                <p:inputText   id="nome" value="#{usuarioBean.usuario.nome}"/><br></br>
+                <p:outputLabel value="Senha:" for="senha"/><br></br>
+                <p:password   id="senha" value="#{usuarioBean.usuario.password}"/><br></br>
+                <p:outputLabel value="Email:" for="email"/><br></br>
+                <p:inputText id="email" value="#{usuarioBean.usuario.email}" /><br></br>
+                <p:outputLabel value="Data de Nascimento:" for="data_nascimento"/> <br></br>
+                <p:inputText id="data_nascimento" value="#{usuarioBean.usuario.data_nascimento}"/> <br></br>
+                <p:outputLabel value="Perfil:" for="perfil"/><br></br>
+                <p:selectOneRadio id="perfil" value = "#{usuarioBean.usuario.perfil}">
+                    <f:selectItem itemValue = "Comum" itemLabel = "Comum" />
+                </p:selectOneRadio><br></br>
+                <p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/>
+                <p:commandButton value="Login" outcome="login"/>
+            </p:fieldset>
+        </h:form>
+        </p:layoutUnit>
+
+</p:layout>
+</h:body>
 </html>

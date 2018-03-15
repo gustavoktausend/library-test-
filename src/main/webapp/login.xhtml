@@ -10,10 +10,10 @@
 </h:head>
 
 <h:body>
-    <h1>Acesso Library_Test</h1>
-        <h:panelGrid columns="2">
+    <p:layout fullPage="true">
+        <p:layoutUnit position="center">
             <h:form>
-                <p:fieldset legend="Login">
+                <p:fieldset legend="Library Test">
                     <h:outputLabel value="Login: " for="email"/>
                     <p:inputText id="email" value="#{usuarioBean.usuario.email}"/>
                     <h:outputLabel value="Senha: " for="password"/>
@@ -22,7 +22,8 @@
                     <p:commandButton value="Cadastre-se" action="#{usuarioBean.novoUsuarioCadastrar}"/>
                 </p:fieldset>
             </h:form>
-        </h:panelGrid>
+        </p:layoutUnit>
+    </p:layout>
 </h:body>
 
 
