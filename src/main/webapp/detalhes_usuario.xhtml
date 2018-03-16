@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+
+ <h:body>
+     <p:layout fullPage="true">
+
+     <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+         <p:graphicImage library="img" name="logo.png" />
+
+     </p:layoutUnit>
+
+         <p:layoutUnit position="west" size="230" header="Library Test" resizable="true"  collapsible="true">
+             <h:form>
+                 <p:menu>
+                     <p:menuitem value="Cadastro de Usuário" outcome="crud_usuario"/>
+                     <p:menuitem value="Cadastro de Livro" outcome="crud_livro" />
+                     <p:menuitem value="Pesquisa de Livro" outcome="tela_pesquisa_livro"/>
+                     <p:menuitem value="Pesquisa de Usuário" outcome="tela_pesquisa_usuario"/>
+
+                 </p:menu>
+             </h:form>
+         </p:layoutUnit>
+
+     <p:layoutUnit position="center">
+        <h:form>
+          <p:fieldset legend="Detalhes Usuário">
+              <h:outputLabel value="Nome:" for="nome"/> <br></br>
+              <p:inputText   id="nome" value="#{usuarioBean.usuario.nome}"/><br></br>
+              <h:outputLabel value="Perfil:" for="perfil"/><br></br>
+              <p:inputText   id="perfil" value="#{usuarioBean.usuario.perfil}"/><br></br>
+              <h:outputLabel value="Data de Nascimento" for="dta_nascimento"/><br></br>
+              <p:inputText id="dta_nascimento" value="#{usuarioBean.usuario.data_nascimento}" /><br></br>
+              <h:outputLabel value="Telefone:" for="telefone"/> <br></br>
+              <p:inputText id="telefone" value="#{usuarioBean.usuario.telefone}"/> <br></br>
+              <h:outputLabel value="Email:" for="email"/> <br></br>
+              <p:inputText id="email" value="#{usuarioBean.usuario.email}"/><br></br>
+          </p:fieldset>
+          <p:fieldset legend="Histórico de Livros Alugados">
+              <p:dataTable id="histórico-livros-usuario" var="livro" value="#{livroBean.getListaHistoricoPorUsuario(usuarioBean.usuario)}">
+                  <f:facet name="header">
+                      Histórico de Empréstimos
+                  </f:facet>
+                  <p:column id="coluna1">
+                      <f:facet name ="header">
+                          <h:outputText value="ID Registro"/>
+                      </f:facet>
+                      <h:outputText value="#{livro.idLivro}"/>
+                  </p:column>
+                  <p:column id="coluna2">
+                      <f:facet name="header">
+                          <h:outputText value="Título"/>
+                      </f:facet>
+                      <h:outputText value="#{livro.titulo}"/>
+                  </p:column>
+                  <p:column id="coluna3">
+                      <f:facet name = "header">
+                          <h:outputText value="Autor"/>
+                      </f:facet>
+                      <h:outputText value="#{livro.autor}"/>
+                  </p:column>
+              </p:dataTable>
+          </p:fieldset>
+        </h:form>
+     </p:layoutUnit>
+     </p:layout>
+ </h:body>
+   
+</html>

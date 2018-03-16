@@ -1,5 +1,6 @@
 package br.com.neoway.library.dao;
 
+import br.com.neoway.library.Livro;
 import br.com.neoway.library.Usuario;
 
 import java.util.ArrayList;
@@ -7,11 +8,12 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    public static int IdCountUser;
+    private static int idCountUser =1;
 
     public static Usuario usuarioLogado;
 
     private static List<Usuario> usuarios;
+
 
     static {
         usuarios = new ArrayList<>();
@@ -19,11 +21,11 @@ public class UsuarioDAO {
     }
 
     public static void add(Usuario usuario){
+        usuario.setIdUser(idCountUser++);
         if (existeUsuario(usuario.getEmail())){
             System.out.println("Usuário já existente");
 
         }else{
-            usuario.setIdUser(IdCountUser++);
             usuarios.add(usuario);
         }
 
@@ -51,7 +53,7 @@ public class UsuarioDAO {
         return null;
     }
 
-    public static boolean existeUsuario (String email){
+    private static boolean existeUsuario (String email){
 
         for(Usuario usuarioExiste: usuarios){
 
@@ -78,7 +80,7 @@ public class UsuarioDAO {
                     usuarioEditado.setPerfil(usuario.getPerfil());
                     usuarioEditado.setData_nascimento(usuario.getData_nascimento());
                 }
-                //referencia // obj // ponteiro e etc
+                //referencia // obj
 
     }
 

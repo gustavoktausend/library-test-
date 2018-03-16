@@ -20,6 +20,9 @@ public class Livro {
     private Date data_devolucao;
     private String status;
     private String reservado_para;
+    private String alugado_para;
+
+
 
 
 
@@ -67,6 +70,9 @@ public class Livro {
     public String getReservado_para() {
         return reservado_para;
     }
+    public String getAlugado_para() {
+        return alugado_para;
+    }
 
     public void setReservado(boolean reservado) {
         this.reservado = reservado;
@@ -110,7 +116,9 @@ public class Livro {
     public void setReservado_para(String reservado_para) {
         this.reservado_para = reservado_para;
     }
-
+    public void setAlugado_para(String alugado_para) {
+        this.alugado_para = alugado_para;
+    }
 
     @Override
     public boolean equals(Object o) {

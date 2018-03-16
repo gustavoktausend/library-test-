@@ -36,41 +36,44 @@
     <p:layoutUnit position="center">
             <h:form>
           <p:fieldset legend="Pesquisa De Usuario" toggleable="true" toggleSpeed="500" style="margin-bottom: 20px">
-              <h:outputText value="Título do Livro" for="titulo_livro"/>
-              <p:inputText id="titulo_livro" value="#{livroBean.livro.titulo}"/>
-              <h:outputText value="Autor" for="autor_livro"/>
-              <p:inputText id="autor_livro" value="#{livroBean.livro.autor}"/>
-              <p:commandButton value="Buscar por Titulo" ajax="false" action="#{livroBean.buscarLivrosPorTitulo}"/>
-              <p:commandButton value="Buscar por Autor" ajax="false" action="#{livroBean.buscarLivrosPorAutor}"/>
+              <h:outputText value="Nome" for="nome_user"/>
+              <p:inputText id="nome_user" value="#{usuarioBean.usuario.nome}"/><br></br>
+              <h:outputText value="Perfil" for="perfil_user"/>
+              <p:selectOneRadio id="perfil_user" value="#{usuarioBean.usuario.perfil}">
+                      <f:selectItem itemValue="Administrador" itemLabel="Administrador"/>
+                      <f:selectItem itemValue="Comum" itemLabel="Comum"/>
+              </p:selectOneRadio>
+              <p:commandButton value="Buscar por Nome" ajax="false" action="#{usuarioBean.listarUsuariosPorNome}"/>
+              <p:commandButton value="Buscar por Perfil" ajax="false" action="#{usuarioBean.listarUsuariosPorPerfil(usuarioBean.usuario.perfil)}"/>
           </p:fieldset>
 
             <p:fieldset legend="Usuarios Cadastrados" style="margin-bottom: 20px">
-                <p:dataTable id="livros-cadastrados" var="livro" value="#{livroBean.listaBusca}">
+                <p:dataTable id="usuarios-cadastrados" var="usuario" value="#{usuarioBean.listaBuscaUser}">
                 <f:facet name="header">
                     Busca
                 </f:facet>
                 <p:column id="coluna1">
                     <f:facet name ="header">
-                        <h:outputText value="ID Registro"/>
+                        <h:outputText value="Id"/>
                     </f:facet>
-                    <h:outputText value="#{livro.idLivro}"/>
+                    <h:outputText value="#{usuario.idUser}"/>
                 </p:column>
                 <p:column id="coluna2">
                     <f:facet name="header">
-                        <h:outputText value="Título"/>
+                        <h:outputText value="Nome"/>
                     </f:facet>
-                    <h:outputText value="#{livro.titulo}"/>
+                    <h:outputText value="#{usuario.nome}"/>
                 </p:column>
                 <p:column id="coluna3">
                     <f:facet name = "header">
-                        <h:outputText value="Autor"/>
+                        <h:outputText value="Email"/>
                     </f:facet>
-                    <h:outputText value="#{livro.autor}"/>
+                    <h:outputText value="#{usuario.email}"/>
                 </p:column>
                 <p:column id="coluna4">
                     <f:facet name="header"/>
-                    <p:button title="Detalhes" value="Detalhes" outcome="detalhes_livro" >
-                        <f:param value="#{livro.idLivro}" name="idLivro"/>
+                    <p:button title="Detalhes" value="Detalhes" outcome="detalhes_usuario" >
+                        <f:param value="#{usuario.idUser}" name="idUser"/>
                     </p:button>
                 </p:column>
             </p:dataTable>

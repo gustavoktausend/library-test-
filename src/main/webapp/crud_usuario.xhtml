@@ -45,9 +45,9 @@
                     <f:selectItem itemValue = "Administrador" itemLabel = "Administrador" />
                     <f:selectItem itemValue = "Comum" itemLabel = "Comum" />
                 </p:selectOneRadio><br></br>
-                <p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrarUsuario}"/>
-                <p:commandButton value="Editar" action="#{usuarioBean.confirmarAlteracaoUsuario}" />
-                <p:commandButton value="Buscar" action="#{usuarioBean.buscarUsuario}"/>
+                <p:commandButton value="Cadastrar" ajax="false" action="#{usuarioBean.cadastrarUsuario}"/>
+                <p:commandButton value="Editar" ajax="false" action="#{usuarioBean.confirmarAlteracaoUsuario}" />
+                <p:commandButton value="Buscar" ajax="false" action="#{usuarioBean.buscarUsuario}"/>
             </p:fieldset>
             <p:fieldset legend="Tabela de Usuários Cadastrados">
                 <p:dataTable id="usuarios-cadastrados" value="#{usuarioBean.usuarios}" var="usuario">

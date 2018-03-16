@@ -1,5 +1,6 @@
 package br.com.neoway.library;
 
+import br.com.neoway.library.dao.LivroDAO;
 import br.com.neoway.library.dao.UsuarioDAO;
 
 import javax.annotation.PostConstruct;
@@ -16,10 +17,14 @@ import java.util.List;
 public class UsuarioBean implements Serializable{
 
     private Usuario usuario;
+    private List<Usuario> listaBuscaUser;
 
     @PostConstruct
     public void init(){
         usuario = new Usuario();
+        listaBuscaUser = new ArrayList<>();
+
+
     }
 
     public void setUsuario(Usuario usuario) {
@@ -32,6 +37,10 @@ public class UsuarioBean implements Serializable{
 
     public List<Usuario> getUsuarios() {
         return UsuarioDAO.list();
+    }
+
+    public List<Usuario> getListaBuscaUser () {
+        return listaBuscaUser;
     }
 
     public Usuario getUsuarioLogado() {
@@ -49,7 +58,7 @@ public class UsuarioBean implements Serializable{
             throw new RuntimeException("É necessário Preencher Campo Senha!"); }
         System.out.println("Usuário" + this.usuario.getPerfil() + "id:" +this.usuario.getIdUser()  );
         UsuarioDAO.add(usuario);
-        this.usuario = new Usuario();
+        usuario = new Usuario();
         }
 
     public void buscarUsuario(){
@@ -98,6 +107,42 @@ public class UsuarioBean implements Serializable{
         return "novo_usuario.xhtml";
 
     }
+
+    public  void listarUsuariosPorPerfil (String perfil){
+        if(perfil.equals("Administrador")){
+            listarUsuariosAdmin();
+        }
+        if(perfil.equals("Comum")) {
+            listarUsuariosComuns();
+        }
+    }
+
+    private void listarUsuariosAdmin (){
+        for (Usuario usuarioBusca: UsuarioDAO.list()){
+            if(usuarioBusca.getPerfil().equals("Administrador")){
+                listaBuscaUser.add(usuarioBusca);
+            }
+        }
+    }
+
+    private void listarUsuariosComuns (){
+        for (Usuario usuarioBusca: UsuarioDAO.list()){
+            if(usuarioBusca.getPerfil().equals("Comum")){
+                listaBuscaUser.add(usuarioBusca);
+            }
+        }
+    }
+
+    public void listarUsuariosPorNome (){
+        for (Usuario usuarioBusca: UsuarioDAO.list()){
+            if(usuarioBusca.getNome().equals(this.usuario.getNome())){
+                listaBuscaUser.add(usuarioBusca);
+                this.usuario = new Usuario();
+            }
+        }
+    }
+
+
 
     public String retornoLogin(){
         return "login.xhtml";
