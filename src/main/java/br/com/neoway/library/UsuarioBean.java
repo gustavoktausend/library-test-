@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,8 +22,27 @@ public class UsuarioBean implements Serializable{
 
     @PostConstruct
     public void init(){
-        usuario = new Usuario();
+        String idUser = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idUser");
+
+        if(idUser != null){
+            usuario = UsuarioDAO.findById(Integer.parseInt(idUser));
+        }else{
+            usuario = new Usuario();
+
+        }
+
+
+
         listaBuscaUser = new ArrayList<>();
+
+        Usuario usuario1 = new Usuario();
+        usuario1.setIdUser(1);
+        usuario1.setPerfil("Administrador");
+        usuario1.setNome("Teste Usuario");
+        usuario1.setData_nascimento("21/12/1994");
+        usuario1.setEmail("teste@.com.br");
+        UsuarioDAO.add(usuario1);
+
 
 
     }
