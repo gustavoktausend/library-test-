@@ -42,6 +42,7 @@ public class UsuarioBean implements Serializable{
         usuario1.setData_nascimento("21/12/1994");
         usuario1.setEmail("teste@.com.br");
         UsuarioDAO.add(usuario1);
+        UsuarioDAO.setUsuarioLogado(usuario1);
 
 
 

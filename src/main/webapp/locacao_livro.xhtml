@@ -5,13 +5,17 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
 <h:body>
-    <h1>Livros Disponíveis</h1>
-    <h:panelGrid>
-        <h:form>
-          <fieldset>
-                <legend>Livros Cadastrados</legend>
-                <h:dataTable id="livros-cadastrados" value="#{livroBean.livros}" var="livro">
+
+        <p:layout fullPage="true">
+          <h:form>
+            <p:fieldset legend="Alugar Livros">
+                <h:dataTable id="livros-cadastrados" value="#{livroBean.listaLivrosDisponiveis}" var="livro">
                     <h:column id="coluna1">
                         <f:facet name ="header">
                             <h:outputText value="ID Registro"/>
@@ -28,23 +32,15 @@
                     <f:facet name = "header">
                         <h:outputText value="Autor"/>
                     </f:facet>
-                    <h:outputText value="#{livro.autor}"/>
+                        <h:outputText value="#{livro.autor}"/>
                     </h:column>
                     <h:column id="coluna4">
-                        <f:facet name = "header">
-                            <h:outputText value="Reservado?"/>
-                        </f:facet>
-                        <h:outputText value =""/>
-                    </h:column>
-                    <h:column id="coluna5">
-                        <f:facet name = "header">
-                        </f:facet>
-                        <h:commandLink value="Alugar" action="#{livroBean.alterarLivro(livro)}"/>
+                        <p:commandButton value="Alugar" action="#{livroBean.alugarLivro(livro)}" ajax="false"/>
                     </h:column>
                 </h:dataTable>
-            </fieldset>
-        </h:form>
-    </h:panelGrid>
+            </p:fieldset>
+          </h:form>
+</p:layout>
 </h:body>   
    
 </html>

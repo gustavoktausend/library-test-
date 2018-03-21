@@ -1,6 +1,7 @@
 package br.com.neoway.library.dao;
 
 import br.com.neoway.library.Livro;
+import br.com.neoway.library.Usuario;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,12 +18,15 @@ public class LivroDAO {
 
     private static List<Livro> livrosAlugados;
 
+    private static List<Livro> livrosAlugadosPorUsuario;
+
     private static List<Livro> listaHistorico;
 
     static {
         livros = new ArrayList<>();
         livrosAlugados = new ArrayList<>();
         listaHistorico = new ArrayList<>();
+        livrosAlugadosPorUsuario = new ArrayList<>();
     }
 
     public static void add(Livro livro){
@@ -46,7 +50,7 @@ public class LivroDAO {
         livros.remove(livro);
     }
 
-    public static void remmoverLivroAlugar(Livro livro){
+    public static void removerLivroAlugar(Livro livro){
 
         livrosAlugados.remove(livro);
     }
@@ -56,9 +60,19 @@ public class LivroDAO {
         return livros;
     }
 
-    public static List<Livro> listarAlugadosPorUsuario(){
+    public static List<Livro> listarAlugados(){
 
         return livrosAlugados;
+    }
+
+    public static List<Livro> listarLivrosAlugadosPorUsuario(String nomeUsuario){
+//        nomeUsuario = UsuarioDAO.retornaNomeUsuarioLogado();
+        for (Livro localLivro:livros) {
+            if (localLivro.getReservado_para().equals(nomeUsuario)){
+                livrosAlugadosPorUsuario.add(localLivro);
+            }
+        }
+        return livrosAlugadosPorUsuario;
     }
 
     public static List<Livro> listarHistoricoReservas(){

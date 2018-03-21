@@ -45,7 +45,8 @@
               <p:inputText id="edicao" value="#{livroBean.livro.edicao}"/><br></br>
               <h:outputLabel value="Status:" for="status"/><br></br>
               <h:outputLabel id="status" value="#{livroBean.livro.status}"/><br></br>
-              <h:outputLabel value="Reservado?" id="reservado"/> <br></br>
+              <h:outputLabel value="Reservado?" for="reservado"/> <br></br>
+              <h:outputText id="reservado" value="#{livroBean.livro.reservado}"/><br></br>
           </p:fieldset>
         </h:form>
      </p:layoutUnit>

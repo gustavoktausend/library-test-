@@ -23,6 +23,7 @@ public class LivroBean implements Serializable{
     private Date dataAtual = Calendar.getInstance().getTime();
     private List<Livro> listaBusca;
     private List<Livro> listaHistoricoPorUsuario;
+    private List<Livro> listaLivrosDisponiveis;
 
     @PostConstruct
     public void init(){
@@ -37,7 +38,7 @@ public class LivroBean implements Serializable{
 
         listaBusca = new ArrayList<>();
         listaHistoricoPorUsuario = new ArrayList<>();
-
+        listaLivrosDisponiveis = new ArrayList<>();
 
 
         Livro livro1 = new Livro();
@@ -50,6 +51,7 @@ public class LivroBean implements Serializable{
         livro1.setAlugado_para("Teste Usuario");
         livro1.setReservado_para("Teste Usuario");
         LivroDAO.add(livro1);
+        listarLivrosDisponiveis();
     }
 
     public Livro getLivro() {
@@ -81,6 +83,10 @@ public class LivroBean implements Serializable{
         return listaHistoricoPorUsuario;
     }
 
+    public List<Livro> getListaLivrosDisponiveis (){
+        return listaLivrosDisponiveis;
+    }
+
     public Integer getIdLivro() {
         return idLivro;
     }
@@ -103,6 +109,8 @@ public class LivroBean implements Serializable{
         if(livro.getEditora().isEmpty()){
             throw  new RuntimeException("É necessário informar a Editora");
         }
+        livro.setReservado(false);
+        livro.setAlugado(false);
         LivroDAO.add(livro);
         livro = new Livro();
 
@@ -137,6 +145,15 @@ public class LivroBean implements Serializable{
         }
     }
 
+    public void listarLivrosDisponiveis(){
+        for (Livro livro :LivroDAO.list()){
+            if(!livro.isReservado() || !livro.isAlugado()){
+                listaLivrosDisponiveis.add(livro);
+                this.livro = new Livro();
+            }
+        }
+    }
+
     public void removerLivro(Livro livro){
         this.setLivro(livro);
         System.out.println("Removendo Livro:" + this.livro.getTitulo()) ;
@@ -155,8 +172,9 @@ public class LivroBean implements Serializable{
     public void alugarLivro (Livro livro){
         if(!livro.isReservado()){
             if(!livro.isAlugado()){
-                if(LivroDAO.listarAlugadosPorUsuario().size() < 3) {
+                if(LivroDAO.listarLivrosAlugadosPorUsuario(UsuarioDAO.usuarioLogado.getNome()).size() < 3) {
                     this.setLivro(livro);
+                    this.livro.setAlugado_para(UsuarioDAO.usuarioLogado.getNome());
                     this.livro.setAlugado(true);
                     this.livro = new Livro();
                     LivroDAO.addLivrosAlugar(livro);
@@ -164,6 +182,7 @@ public class LivroBean implements Serializable{
             }else{throw new RuntimeException("Livro Já alugado");}
         }else{throw new RuntimeException("Livro Reservado");}
     }
+
     public void listarLivrosPorUsuario (Usuario usuario){
         for (Livro livroBusca: LivroDAO.list()){
             if(livroBusca.getReservado_para().equals(usuario.getNome()) || livroBusca.getAlugado_para().equals(usuario.getNome())){
@@ -188,7 +207,7 @@ public class LivroBean implements Serializable{
         if(livro.isReservado()){
             this.setLivro(livro);
             this.livro.setAlugado(false);
-            LivroDAO.remmoverLivroAlugar(livro);
+            LivroDAO.removerLivroAlugar(livro);
             this.livro.setData_devolucao(dataAtual);
             this.livro = new Livro();
         }
